@@ -1,0 +1,9 @@
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    .content-header
+      .alert.alert-success.alert-dismissible
+        button.close[type="button" data-dismiss="alert" aria-hidden="true"] ×
+        h4
+          i.icon.fa.fa-check
+          | Success!
+        = msg

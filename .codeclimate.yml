@@ -1,0 +1,47 @@
+engines:
+  brakeman:
+    enabled: true
+  rubocop:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  reek:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  scss-lint:
+    enabled: true
+  coffeelint:
+    enabled: true
+ratings:
+  paths:
+  - "app/**/*"
+  - "lib/**/*"
+  - "**.rb"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "client/**/*"
+exclude_paths:
+- "config/**/*"
+- "public/**/*"
+- "spec/**/*"
+- "bin/**/*"
+- "config.ru"
+- "db/**/*"
+- "README.rdoc"
+- "app/assets/*"
+- "vendor/assets/*"
+- "**.jpg"
+- "**.png"
+- "app/controllers/concerns/documentation/*"
+- "app/seeders/rockland_seeder.rb"
+- "app/seeders/seed_sample_match.rb"
+- "Gemfile.lock"

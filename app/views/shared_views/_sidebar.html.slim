@@ -1,0 +1,29 @@
+aside.main-sidebar
+  /! sidebar: style can be found in sidebar.less
+  section.sidebar
+    /! sidebar menu: : style can be found in sidebar.less
+    ul.sidebar-menu
+      li.header MAIN NAVIGATION
+      li.active.treeview
+        a href="#"
+          i.fa.fa-laptop
+          span QA Tools
+          span.pull-right-container
+            i.fa.fa-angle-left.pull-right
+        ul.treeview-menu
+          li.active
+            a href="/admin/scores"
+              i.fa.fa-circle-o
+              | Score Testing Tool
+          li
+            a href="/admin/scenarios"
+              i.fa.fa-circle-o
+              | Scenario Analysis
+          li
+            a href="/admin/matches"
+              i.fa.fa-circle-o
+              | Match JSON Viewer
+      li
+        = link_to '/api-docs/index.html'
+          i.fa.fa-book
+          span API Docs

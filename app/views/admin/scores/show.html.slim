@@ -1,0 +1,99 @@
+h1
+  | Daryllxd Score Testing Tool
+  i.em.em-golf
+
+code This tool will check if a file was uploaded first before it checks the text values.
+
+hr
+
+= form_tag('/admin/scores', method: 'post',  multipart: true) do 
+  = label_tag 'match_result', 'CSV formatted file'
+  = file_field_tag 'match_result_file'
+  = text_area 'match_result', :text, :value => @csv_contents, cols: 50, rows: 15
+  = label_tag 'reversed', 'Reversed?'
+  = check_box 'reversed', 'flag'
+  = submit_tag
+
+- if @results
+  table.table.table-condensed.table-bordered.table-striped.code
+    tr
+      td(colspan=22) RCC -  #{@results[:teebox][:name]}
+    tr
+      td(colspan=22)
+        |  Sat Dec 3, 2016
+
+    tr
+      td(data-toggle="tooltip" data-placement="top" title="Handicap Value") HDCP
+      - @results[:teebox][:handicap_values][(0..8)].each do |item|
+        td= item
+
+      td.strong
+
+      - @results[:teebox][:handicap_values][(9..17)].each do |item|
+        td= item
+
+      td.strong(colspan=2)
+
+    tr
+      td(data-toggle="tooltip" data-placement="top" title="Par per hole") Par
+      - @results[:teebox][:par_values][(0..8)].each do |item|
+        td= item
+
+      td.strong= @results[:teebox][:par_values][(0..8)].reduce(&:+)
+
+      - @results[:teebox][:par_values][(9..17)].each do |item|
+        td= item
+
+      td.strong= @results[:teebox][:par_values][(9..17)].reduce(&:+)
+      td.strong= @results[:teebox][:par_values][(0..17)].reduce(&:+)
+
+    - @results[:participants].each do |participant|
+      tr
+        td #{participant[:name]}, #{participant[:handicap_value]}, Junks: #{participant[:manual_junks]}
+        - participant[:raw_gross_score][(0..8)].each do |score|
+          td= score
+
+        td.strong= participant[:raw_gross_score][(0..8)].map(&:to_i).reduce(&:+)
+
+        - participant[:raw_gross_score][(9..17)].each do |score|
+          td= score
+
+        td.strong= participant[:raw_gross_score][(9..18)].map(&:to_i).reduce(&:+)
+        td.strong= participant[:raw_gross_score][(0..17)].map(&:to_i).reduce(&:+)
+
+    tr
+      td(colspan=23)
+    tr.strong
+      td HOLE
+      - (1..9).each do |item|
+        td= item
+      td OUT
+      - (10..18).each do |item|
+        td= item
+      td IN
+      td TOT
+      td(data-toggle="tooltip" data-placement="top" title="Stake") S
+    - @results[:submatches].each do |submatch|
+      tr
+        td
+          = submatch[:requester]
+          |  vs&nbsp;
+          = submatch[:competitor]
+        - submatch[:scores].first[:score_array].each do |score|
+          td= score
+        td.strong.btn-warning = submatch[:scores].first[:final_score]
+        - submatch[:scores].third[:score_array].each do |score|
+          td= score
+        td.strong.btn-warning(data-toggle="tooltip" data-placement="top" title="Back: #{submatch[:scores].third[:final_score]} + Final: #{submatch[:final_score]}")= submatch[:scores].third[:final_score] + submatch[:final_score]
+        td.bg-primary(data-toggle="tooltip" data-placement="top" title="Junk: #{(submatch[:junk_score] || 0)}")= submatch[:aloha_score] + submatch[:scores].map_fetch(:final_score).inject(:+) + submatch[:final_score]+ (submatch[:junk_score] || 0)
+        td.strong $#{submatch[:stake]}
+      tr
+        td
+          | Press
+        - submatch[:scores].second[:score_array].each do |score|
+          td= score
+        td.strong.btn-warning= submatch[:scores].second[:final_score]
+        - submatch[:scores].fourth[:score_array].each do |score|
+          td= score
+        td.strong(data-toggle="tooltip" data-placement="top" title="Press: #{submatch[:scores].fourth[:final_score]} + Aloha: #{submatch[:aloha_score]}")= submatch[:aloha_score] + submatch[:scores].fourth[:final_score]
+        td.strong.btn-success(data-toggle="tooltip" data-placement="top" title="stake * total points") $#{((submatch[:aloha_score] + submatch[:scores].map_fetch(:final_score).inject(:+)) + submatch[:final_score] + (submatch[:junk_score] || 0)) * submatch[:stake]}

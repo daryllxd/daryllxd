@@ -1,0 +1,11 @@
+machine:
+  ruby:
+    version: 2.3.1
+
+dependencies:
+  pre:
+    - gem install bundler
+
+test:
+  post:
+      - CODECLIMATE_REPO_TOKEN=2daf462b0c367388609dc40903928190b2c5538c819ea5ef5eb5b9aa16a0e4c8 bundle exec codeclimate-test-reporter

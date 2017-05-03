@@ -1,0 +1,22 @@
+{
+  "name": "client",
+  "homepage": "https://github.com/sourcepad/daryllxd-backend",
+  "authors": [
+    "Daryll Santos <daryll.santos@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "admin-lte#^2.3.11",
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}

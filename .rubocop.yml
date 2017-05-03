@@ -1,0 +1,55 @@
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - 'db/**/*'
+    - 'db/**/*'
+
+Style/GuardClause:
+  MinBodyLength: 10
+
+Documentation:
+  Enabled: false
+
+# 15 is too low!
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - 'db/**/*'
+    - 'app/seeders/seed_sample_match.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+    - 'db/migrate/*.rb'
+    - '**/*_spec.rb'
+    - '**/documentation/**/*/'
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - 'app/seeders/*'
+    - 'spec/support/helpers/**.rb'
+    - 'db/**/*'
+
+Metrics/ModuleLength:
+  Exclude:
+    - '**/*_spec.rb'
+    - '**/documentation/*.rb'
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - '**/documentation/**/*/'
+    - '**/documentation/presenters/*.rb'
+    - 'app/seeders/seed_sample_match.rb'
+
+Style/IndentArray:
+  Exclude:
+    - '**/*_spec.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# I do not agree with this! -Daryll http://www.rubydoc.info/gems/rubocop/0.44.1/RuboCop/Cop/Style/Next
+Style/Next:
+  Enabled: false
