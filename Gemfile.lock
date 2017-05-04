@@ -367,7 +367,7 @@ DEPENDENCIES
   stronger_parameters
   terminal-table
   thin
-  thor
+  thor (= 0.19.4)
   thor-rails
   timecop
   web-console (~> 2.0)

@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require './pomodoro_cli'
+
+PomodoroCli.start(ARGV)

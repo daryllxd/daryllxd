@@ -14,7 +14,7 @@ gem 'stateful_enum'
 gem 'stronger_parameters'
 gem 'terminal-table'
 gem 'thin'
-gem 'thor'
+gem 'thor', '0.19.4'
 gem 'thor-rails'
 
 group :development, :test do
