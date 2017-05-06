@@ -10,4 +10,7 @@
 
 class ActivityTag < ApplicationRecord
   validates_presence_of :name
+
+  has_many :pomodoro_activity_tags
+  has_many :pomodoros, through: :pomodoro_activity_tags
 end

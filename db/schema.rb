@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505125505) do
+ActiveRecord::Schema.define(version: 20170506151139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20170505125505) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pomodoro_activity_tags", force: :cascade do |t|
+    t.integer  "pomodoro_id"
+    t.integer  "activity_tag_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["activity_tag_id"], name: "index_pomodoro_activity_tags_on_activity_tag_id", using: :btree
+    t.index ["pomodoro_id"], name: "index_pomodoro_activity_tags_on_pomodoro_id", using: :btree
   end
 
   create_table "pomodoros", force: :cascade do |t|

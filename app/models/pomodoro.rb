@@ -13,6 +13,9 @@ class Pomodoro < ApplicationRecord
   validates :description, presence: true
   validates :duration, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
+  has_many :pomodoro_activity_tags
+  has_many :activity_tags, through: :pomodoro_activity_tags
+
   def self.for_date(date: Date.today)
     where("created_at BETWEEN '#{date.beginning_of_day}' AND '#{date.end_of_day}'")
       .order('id DESC')
