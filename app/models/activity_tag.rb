@@ -9,7 +9,7 @@
 #
 
 class ActivityTag < ApplicationRecord
-  validates_presence_of :name
+  validates :name, presence: true, uniqueness: true
 
   has_many :pomodoro_activity_tags
   has_many :pomodoros, through: :pomodoro_activity_tags
