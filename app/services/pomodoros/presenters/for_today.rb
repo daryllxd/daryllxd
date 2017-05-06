@@ -5,7 +5,7 @@ module Pomodoros
     class ForToday
       attr_reader :pomodoros
 
-      def initialize(pomodoros: Pomodoro.for_today)
+      def initialize(pomodoros: Pomodoro.for_date)
         @pomodoros = pomodoros
       end
 
