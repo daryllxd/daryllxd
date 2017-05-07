@@ -16,6 +16,8 @@ module Pomodoros
       end
 
       pomodoro
+    rescue TypeError, ActiveRecord::RecordInvalid => e
+      Pomodoros::Errors::GenericError.new(e)
     end
   end
 end
