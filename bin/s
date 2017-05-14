@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require './strava_lords_cli'
+
+StravaLordsCli.start(ARGV)
