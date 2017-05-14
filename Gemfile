@@ -19,6 +19,7 @@ gem 'thor-rails'
 
 group :development, :test do
   gem 'bullet', '5.5.1'
+  gem 'clipboard'
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.7.3'
   gem 'codeclimate-test-reporter', require: false

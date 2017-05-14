@@ -1,4 +1,5 @@
 require 'thor'
+require 'clipboard'
 
 STRAVA_LORDS_PATH = './app/services/strava_lords'.freeze
 
@@ -14,5 +15,6 @@ class StravaLordsCli < Thor
     ).call
 
     puts tags
+    Clipboard.copy(tags)
   end
 end

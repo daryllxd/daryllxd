@@ -89,6 +89,7 @@ GEM
       thin (~> 1.6)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
+    clipboard (1.1.1)
     codeclimate-test-reporter (1.0.5)
       simplecov
     coderay (1.1.1)
@@ -335,6 +336,7 @@ DEPENDENCIES
   capistrano-rails-console (= 2.2.0)
   capistrano-rvm (~> 0.1.1)
   capistrano-thin (~> 1.2.0)
+  clipboard
   codeclimate-test-reporter
   database_cleaner
   db-query-matchers
