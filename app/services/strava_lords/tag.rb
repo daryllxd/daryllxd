@@ -26,17 +26,9 @@ module StravaLords
 
     def priority(value)
       priority_words = [
-        'long-ride',
-        'red-zone',
-        'fasted',
-        'core',
-        'core-classes',
-        'yoga-classes',
-        'weights',
-        'steady-state',
-        'tempo',
-        '30m',
-        'stretched'
+        'long-ride', 'recovery', 'red-zone', 'fasted',
+        'core', 'core-classes', 'yoga-classes', 'weights',
+        'endurance', 'steady-state', 'tempo', '30m', 'stretched'
       ]
 
       priority_words.index(value) || 999
