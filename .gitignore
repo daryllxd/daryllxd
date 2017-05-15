@@ -33,6 +33,7 @@ db/*.sqlite3
 .sass-cache
 /client/bower_components
 /config/config.yml
+/config/secrets.yml
 /coverage.data
 /coverage/
 /db/*.javadb/
