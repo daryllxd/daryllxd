@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BaseService
   include ActiveSupport::Rescuable
   rescue_from ActiveRecord::RecordInvalid, with: :handle_record_invalid
@@ -53,13 +54,11 @@ class BaseService
     raise Errors::RecordInvalid.new(error.message, error)
   end
 
-  # rubocop:disable GuardClause
   def ensure_no_excess_attributes(supplied_keys = attribute_keys, required_keys = editable_attributes)
     if (excess_attributes = supplied_keys.find { |k| !required_keys.include?(k) })
       Errors::WrongParams.new("`#{excess_attributes}`", supplied_keys)
     end
   end
-  # rubocop:enable GuardClause
 
   def attribute_keys
     attributes.keys.map(&:to_sym)

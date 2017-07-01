@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Submatches
   class SummaryPresenter < BasePresenter
     include Submatches::VersusNamePresenter

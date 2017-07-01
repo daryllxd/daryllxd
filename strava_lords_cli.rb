@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 require 'thor'
 require 'clipboard'
 
-STRAVA_LORDS_PATH = './app/services/strava_lords'.freeze
+STRAVA_LORDS_PATH = './app/services/strava_lords'
 
 Dir.glob(File.join(STRAVA_LORDS_PATH, '**', '*.rb'), &method(:require))
 

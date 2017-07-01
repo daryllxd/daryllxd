@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe Pomodoros::ChangeDurationService, type: :service do
   let!(:pomodoro) do
     create(:pomodoro, duration: 25)

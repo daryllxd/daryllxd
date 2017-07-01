@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # rubocop:disable LineLength
 # strftime(*args) public
 # Formats date according to the directives in the given format string. The directives begins with a percent (%) character. Any text not listed as a directive will be passed through to the output string.

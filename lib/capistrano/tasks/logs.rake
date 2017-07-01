@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 namespace :logs do
   desc 'tail rails logs'
   task :tail_rails do

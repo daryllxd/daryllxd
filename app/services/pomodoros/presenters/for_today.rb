@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'terminal-table'
 
 module Pomodoros
@@ -36,7 +37,7 @@ module Pomodoros
       end
 
       def total_time_for_today
-        ['Total time for today:', presented_pomodoros.sum {|x| x.second }]
+        ['Total time for today:', presented_pomodoros.sum(&:second)]
       end
     end
   end

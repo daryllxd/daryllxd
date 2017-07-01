@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module GrocerApi
   class Notification
     attr_reader :device_token, :client

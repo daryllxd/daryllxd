@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SubmatchPresenter < BasePresenter
   include ::Submatches::VersusNamePresenter
 

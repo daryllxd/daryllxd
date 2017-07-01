@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'net/ssh/proxy/command'
 
 # config valid only for current version of Capistrano
@@ -22,9 +23,9 @@ set :bundle_without, [:development, :test]
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
 # set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
-set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_files, %w(config/database.yml config/secrets.yml)
 
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets config/thin}
+set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets config/thin)
 
 # Default value for :pty is false
 # set :pty, true

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class UserPresenter < BasePresenter
   def present
     {

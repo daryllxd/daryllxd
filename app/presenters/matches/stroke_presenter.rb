@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # constructor model = instance of Match, not Stroke
 module Matches
   class StrokePresenter < BasePresenter

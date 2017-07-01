@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # def auth_get, auth_patch, auth_put, auth_post, auth_delete
 HTTP_VERBS = [:get, :patch, :put, :post, :delete].freeze
 

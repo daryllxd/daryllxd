@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Submatches
   module VersusNamePresenter
     extend ActiveSupport::Concern

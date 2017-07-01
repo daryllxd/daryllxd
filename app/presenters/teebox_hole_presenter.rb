@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class TeeboxHolePresenter < BasePresenter
   def present
     {

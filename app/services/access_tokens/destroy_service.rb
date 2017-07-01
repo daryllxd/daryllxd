@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module AccessTokens
   class DestroyService
     attr_reader :device_id, :found_token

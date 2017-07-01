@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class MatchPresenter < BasePresenter
   attr_reader :requester
 

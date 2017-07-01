@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe Pomodoros::CreateService do
   context 'happy path' do
     let!(:created_pomodoro) do
@@ -12,4 +13,3 @@ RSpec.describe Pomodoros::CreateService do
     end
   end
 end
-

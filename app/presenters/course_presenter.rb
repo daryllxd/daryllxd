@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CoursePresenter < BasePresenter
   delegate :name, to: :country_club
 

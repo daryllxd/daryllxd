@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ApiController < ApplicationController
   include ControllerAuthentication
   include HandleObjectNotFound

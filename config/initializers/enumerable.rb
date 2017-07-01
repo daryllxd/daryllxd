@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Enumerable
   # This is needed for calculating indie match results, we need to remember past final scores
   # http://stackoverflow.com/questions/30992959/map-with-accumulator-on-an-array

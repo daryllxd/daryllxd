@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Utilities
   class TruncateLongNames
     class LongNames

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 SimpleCov.start do
   add_filter '/app/controllers/concerns/documentation/'
   add_filter '/spec/support/'

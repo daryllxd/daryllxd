@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module StravaLords
   class DescriptionCreator
     attr_reader :tags

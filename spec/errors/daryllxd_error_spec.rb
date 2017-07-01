@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe DaryllxdError do
   it { should be_a_kind_of(StandardError) }
 

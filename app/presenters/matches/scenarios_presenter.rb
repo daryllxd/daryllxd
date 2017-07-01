@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Matches
   class ScenariosPresenter < BasePresenter
     include ::Submatches::VersusNamePresenter

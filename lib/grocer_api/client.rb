@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module GrocerApi
   class Client
     delegate :push, to: :client

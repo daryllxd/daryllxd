@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Pomodoros
   class ChangeDurationService
     attr_reader :pomodoro, :duration, :absolute

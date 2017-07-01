@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 namespace :deploy do
   desc "Install bower"
   task :install_bower do

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe StravaLords::DescriptionCreator do
   context 'happy path' do
     it 'spits out a string with then needed tags' do

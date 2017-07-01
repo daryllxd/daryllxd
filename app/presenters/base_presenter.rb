@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BasePresenter < Delegator
   def self.present_collection(collection_of_models)
     collection_of_models.map do |model|
