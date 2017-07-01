@@ -4,7 +4,6 @@ ruby '2.4.0'
 
 # Rails default gems
 gem 'rails', '5.0.1'
-gem 'activesupport', '5.0.1'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
 gem 'bootsnap'
 gem 'dotenv', require: false
@@ -18,7 +17,6 @@ gem 'stronger_parameters'
 gem 'terminal-table'
 gem 'thin'
 gem 'thor', '0.19.4'
-gem 'thor-rails'
 gem 'watir', '6.3.0', require: false
 
 group :development, :test do

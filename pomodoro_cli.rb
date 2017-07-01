@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 require 'thor'
-require 'thor/rails'
+require 'active_record'
+require './app/services/pomodoros/boot_cli'
 
 class PomodoroCli < Thor
-  include Thor::Rails
-
   desc 'new', 'Makes a new pomodoro'
   method_option :description, type: :string, aliases: '-d'
   method_option :duration, type: :string, aliases: '-u'
