@@ -15,7 +15,6 @@ Metrics/AbcSize:
   Max: 25
   Exclude:
     - 'db/**/*'
-    - 'app/seeders/seed_sample_match.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -40,8 +39,6 @@ Metrics/LineLength:
   Max: 120
   Exclude:
     - '**/documentation/**/*/'
-    - '**/documentation/presenters/*.rb'
-    - 'app/seeders/seed_sample_match.rb'
 
 Style/IndentArray:
   Exclude:

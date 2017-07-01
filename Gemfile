@@ -6,6 +6,7 @@ ruby '2.3.1'
 gem 'rails', '5.0.1'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
 gem 'bootsnap'
+gem 'dotenv', require: false
 gem 'pg', '0.19.0'
 gem 'powerpack'
 gem 'rack-cors', require: 'rack/cors'
@@ -17,6 +18,7 @@ gem 'terminal-table'
 gem 'thin'
 gem 'thor', '0.19.4'
 gem 'thor-rails'
+gem 'watir', '6.3.0', require: false
 
 group :development, :test do
   gem 'bullet', '5.5.1'

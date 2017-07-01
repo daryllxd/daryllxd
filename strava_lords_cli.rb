@@ -17,4 +17,10 @@ class StravaLordsCli < Thor
     puts tags
     Clipboard.copy(tags)
   end
+
+  desc 'publicize', 'Sets all private events to public'
+
+  def publicize
+    StravaLords::Publicizer.new.call
+  end
 end
