@@ -5,6 +5,7 @@ ruby '2.3.1'
 # Rails default gems
 gem 'rails', '5.0.1'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
+gem 'bootsnap'
 gem 'pg', '0.19.0'
 gem 'powerpack'
 gem 'rack-cors', require: 'rack/cors'
