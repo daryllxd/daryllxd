@@ -28,7 +28,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rb-readline'
-  gem 'pry-nav'
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
 end

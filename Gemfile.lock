@@ -67,6 +67,7 @@ GEM
     bullet (5.5.1)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
+    byebug (9.0.6)
     capistrano (3.6.1)
       airbrussh (>= 1.0.0)
       capistrano-harrow
@@ -190,10 +191,11 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-nav (0.2.4)
-      pry (>= 0.9.10, < 0.11.0)
-    pry-rails (0.3.4)
-      pry (>= 0.9.10)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
+      pry (~> 0.10)
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
     public_suffix (2.0.5)
     rack (2.0.1)
     rack-cors (0.4.0)
@@ -357,7 +359,7 @@ DEPENDENCIES
   launchy
   pg (= 0.19.0)
   powerpack
-  pry-nav
+  pry-byebug
   pry-rails
   rack-cors
   rails (= 5.0.1)
