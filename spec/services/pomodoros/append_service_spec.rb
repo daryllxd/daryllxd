@@ -18,6 +18,16 @@ RSpec.describe Pomodoros::AppendService, type: :service do
     end
   end
 
+  context 'integer string' do
+    let!(:appended_pomodoro) do
+      execute.call(duration: '25')
+    end
+
+    it 'creates a pomodoro' do
+      expect(created_pomodoro.reload.duration).to eq 50
+    end
+  end
+
   context 'errors' do
     context 'message' do
       let!(:tried_letter) do

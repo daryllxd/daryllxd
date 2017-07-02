@@ -19,9 +19,10 @@ module Pomodoros
     private
 
     def valid_duration?
-      Integer(duration) && duration.positive?
+      integer_duration = Integer(duration)
+      integer_duration.positive?
     rescue ArgumentError
-      Pomodoros::Errors::GenericError.new('Duration is not an integer.')
+      false
     end
   end
 end
