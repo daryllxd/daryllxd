@@ -18,6 +18,17 @@ class PomodoroCli < Thor
     puts Pomodoros::Presenters::ForToday.new.present
   end
 
+  desc 'append', 'Appends to the last pomodoro'
+  method_option :duration, type: :string, aliases: '-u'
+
+  def append
+    Pomodoros::AppendService.new(
+      duration: options[:duration]
+    ).call
+
+    puts Pomodoros::Presenters::ForToday.new.present
+  end
+
   desc 'list', 'Shows pomodoros'
 
   def list
