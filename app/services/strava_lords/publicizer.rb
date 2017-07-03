@@ -30,7 +30,7 @@ module StravaLords
       browser.goto 'strava.com/athlete/training'
 
       private_activity_training_rows = browser.trs(class: 'training-activity-row').select do |x|
-        x.divs(title: 'Private').first.visible
+        x.divs(title: 'Private').first.visible?
       end
 
       private_activity_training_rows.each do |tr|
@@ -43,6 +43,8 @@ module StravaLords
       end
 
       browser.close
+    rescue Watir::Exception => e
+      puts e
     end
     # rubocop:enable MethodLength, AbcSize
   end
