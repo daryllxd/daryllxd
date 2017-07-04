@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 # Loads everything needed for the Pomodoro sub-app
+ENV['TZ'] = 'UTC'
 
 require 'pry-byebug'
 require './app/models/application_record'
