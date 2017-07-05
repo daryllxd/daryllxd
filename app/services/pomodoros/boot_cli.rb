@@ -2,6 +2,7 @@
 # Loads everything needed for the Pomodoro sub-app
 ENV['TZ'] = 'UTC'
 
+require 'rb-readline'
 require 'pry-byebug'
 require 'app/models/application_record'
 require 'app/models/pomodoro'
