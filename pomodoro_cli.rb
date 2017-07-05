@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'thor'
 require 'active_record'
-require './app/services/pomodoros/boot_cli'
+require 'app/services/pomodoros/boot_cli'
 
 class PomodoroCli < Thor
   desc 'new', 'Makes a new pomodoro'

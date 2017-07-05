@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
-require './pomodoro_cli'
+# add symlink to path if it exists
+$LOAD_PATH.push '/Users/daryllxd/Documents/rails_projects/daryllxd'
+require 'pomodoro_cli'
 
 PomodoroCli.start(ARGV)
