@@ -29,6 +29,8 @@ module StravaLords
       # Visit Strava activities
       browser.goto 'strava.com/athlete/training'
 
+      browser.table(:id, 'search-results').wait_until_present
+
       private_activity_training_rows = browser.trs(class: 'training-activity-row').select do |x|
         x.divs(title: 'Private').first.visible?
       end
