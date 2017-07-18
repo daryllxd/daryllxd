@@ -3,6 +3,8 @@ require 'thor'
 require 'active_record'
 require 'app/services/pomodoros/boot_cli'
 
+Time.zone = 'Eastern Time (US & Canada)'
+
 class PomodoroCli < Thor
   desc 'new', 'Makes a new pomodoro'
   method_option :description, type: :string, aliases: '-d'
