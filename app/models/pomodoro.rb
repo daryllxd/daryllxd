@@ -18,7 +18,8 @@ class Pomodoro < ApplicationRecord
   has_many :activity_tags, through: :pomodoro_activity_tags
 
   def self.for_date(date: Date.current)
-    where("created_at BETWEEN '#{date.beginning_of_day}' AND '#{date.end_of_day}'")
+    includes(:activity_tags)
+      .where("created_at BETWEEN '#{date.beginning_of_day}' AND '#{date.end_of_day}'")
       .order('id DESC')
   end
 end

@@ -26,18 +26,22 @@ module Pomodoros
       def terminal_table_params
         {
           title: "Today's Pomodoros",
-          headings: ['Task', 'Number of Minutes']
+          headings: %w(Task Minutes Tags)
         }
       end
 
       def presented_pomodoros
         pomodoros.map do |pomodoro|
-          [pomodoro.description, pomodoro.duration]
+          [pomodoro.description, pomodoro.duration, sorted_tags_for(pomodoro)]
         end
       end
 
       def total_time_for_today
-        ['Total time for today:', presented_pomodoros.sum(&:second)]
+        ['Total time for today:', presented_pomodoros.sum(&:second), '']
+      end
+
+      def sorted_tags_for(pomodoro)
+        pomodoro.activity_tags.map(&:name).sort.join(', ')
       end
     end
   end
