@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-require 'rails_helper'
-
 RSpec.describe ActivityTag, type: :model do
   context 'validations' do
     context 'name' do
