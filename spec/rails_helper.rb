@@ -71,6 +71,8 @@ RSpec.configure do |config|
       Bullet.end_request
     end
   end
+
+  config.include_context 'service', type: :service
 end
 
 Shoulda::Matchers.configure do |config|
