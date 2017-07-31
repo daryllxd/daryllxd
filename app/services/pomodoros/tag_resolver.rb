@@ -8,7 +8,11 @@ module Pomodoros
     end
 
     def call
-      ActivityTag.where(shortcut: tag_string.split(''))
+      if tag_string.present?
+        ActivityTag.where(shortcut: tag_string.split(''))
+      else
+        []
+      end
     end
   end
 end

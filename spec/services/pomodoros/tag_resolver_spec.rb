@@ -38,5 +38,13 @@ RSpec.describe Pomodoros::TagResolver, type: :service do
         expect(unresolved_tags).to be_empty
       end
     end
+
+    context 'nil' do
+      it 'returns an empty array' do
+        unresolved_tags = execute.call(tag_string: nil)
+
+        expect(unresolved_tags).to be_empty
+      end
+    end
   end
 end
