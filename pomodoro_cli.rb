@@ -3,7 +3,8 @@ require 'thor'
 require 'active_record'
 require 'app/services/pomodoros/boot_cli'
 
-Time.zone = 'Eastern Time (US & Canada)'
+# Ensure all references to timezones are in UTC.
+ENV['TZ'] = 'UTC'
 
 class PomodoroCli < Thor
   desc 'new', 'Makes a new pomodoro'
