@@ -13,9 +13,14 @@ class PomodoroCli < Thor
   method_option :tags, type: :string, aliases: '-t'
 
   def new
+    resolved_tags = Pomodoros::TagResolver.new(
+      tag_string: options[:tags]
+    ).call
+
     Pomodoros::CreateService.new(
       description: options[:description],
-      duration: options[:duration]
+      duration: options[:duration],
+      tags: resolved_tags
     ).call
 
     puts Pomodoros::Presenters::ForToday.new.present
