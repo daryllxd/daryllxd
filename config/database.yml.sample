@@ -4,7 +4,7 @@ development:
   reconnect: false
   database: daryllxd_development
   pool: 5
-  username: daryllxd
+  username: postgres
   password: 
   host: localhost
   port: 5432
@@ -14,9 +14,8 @@ test:
   encoding: utf8
   reconnect: false
   database: daryllxd_development
-  username: daryllxd
   pool: 5
-  username: root
+  username: postgres
   password: 
   host: localhost
   port: 5432

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.4.1'
 
 # Rails default gems
 gem 'rails', '5.0.2'
@@ -25,7 +25,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.7.3'
   gem 'codeclimate-test-reporter', require: false
-  gem 'rspec'
+  gem 'rspec', '3.5.0'
   gem 'rspec-rails'
   gem 'rb-readline'
   gem 'pry-byebug'
@@ -61,6 +61,3 @@ group :test do
   gem 'timecop', require: false
 end
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.3.3'
-end
