@@ -73,6 +73,7 @@ RSpec.configure do |config|
   end
 
   config.include_context 'service', type: :service
+  config.include_context 'service', type: :query
 end
 
 Shoulda::Matchers.configure do |config|

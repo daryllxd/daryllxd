@@ -6,7 +6,7 @@ module Pomodoros
     class ForToday
       attr_reader :pomodoros
 
-      def initialize(pomodoros: Pomodoro.for_date)
+      def initialize(pomodoros: Pomodoros::Queries::ForDateRange.new.call)
         @pomodoros = pomodoros
       end
 
