@@ -2,6 +2,7 @@
 # Loads everything needed for the Pomodoro sub-app
 require 'rb-readline'
 require 'pry-byebug'
+require 'app/services/pomodoros/constants'
 require 'app/models/application_record'
 require 'app/models/date_range_factory'
 require 'app/models/pomodoro'

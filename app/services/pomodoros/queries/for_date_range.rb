@@ -11,8 +11,10 @@ module Pomodoros
       def call
         Pomodoro
           .includes(:activity_tags)
-          .where("created_at BETWEEN '#{date_range.start_date.beginning_of_day}' "\
-                  "AND '#{date_range.end_date.end_of_day}'")
+          .where('pomodoros.created_at::timestamp WITH TIME ZONE '\
+                 "AT TIME ZONE '#{Pomodoros::Constants::TIMEZONE_BASIS}'"\
+                 "BETWEEN '#{date_range.start_date.beginning_of_day}' "\
+                 "AND '#{date_range.end_date.end_of_day}'")
           .order('id DESC')
       end
     end

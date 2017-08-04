@@ -5,6 +5,7 @@ require 'app/services/pomodoros/boot_cli'
 
 # Ensure all references to timezones are in UTC.
 ENV['TZ'] = 'UTC'
+Time.zone = 'UTC'
 
 class PomodoroCli < Thor
   desc 'new', 'Makes a new pomodoro'
