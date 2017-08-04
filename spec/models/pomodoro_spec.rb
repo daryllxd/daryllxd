@@ -9,7 +9,7 @@ RSpec.describe Pomodoro, type: :model do
   end
 
   context 'associations' do
-    it { should have_many(:pomodoro_activity_tags) }
+    it { should have_many(:pomodoro_activity_tags).dependent(:destroy) }
     it { should have_many(:activity_tags).through(:pomodoro_activity_tags) }
   end
 end

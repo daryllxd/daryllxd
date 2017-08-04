@@ -14,6 +14,6 @@ class Pomodoro < ApplicationRecord
   validates :description, presence: true
   validates :duration, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  has_many :pomodoro_activity_tags
+  has_many :pomodoro_activity_tags, dependent: :destroy
   has_many :activity_tags, through: :pomodoro_activity_tags
 end
