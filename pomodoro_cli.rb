@@ -43,4 +43,10 @@ class PomodoroCli < Thor
   def list
     puts Pomodoros::Presenters::ForToday.new.present
   end
+
+  desc 'tags', 'Shows all activity tags'
+
+  def tags
+    puts Pomodoros::Presenters::ActivityTags.new.present
+  end
 end

@@ -15,6 +15,7 @@ require 'app/services/pomodoros/append_service'
 require 'app/services/pomodoros/queries/for_date_range'
 require 'app/errors/daryllxd_error'
 require 'app/services/pomodoros/errors/generic_error'
+require 'app/services/pomodoros/presenters/activity_tags'
 require 'app/services/pomodoros/presenters/for_today'
 
 presumed_symlink = '/usr/local/bin/p'
