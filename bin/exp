@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# add symlink to path if it exists
+$LOAD_PATH.push '/Users/daryllxd/Documents/rails_projects/daryllxd'
+require 'financerinos_cli'
+
+FinancerinosCli.start(ARGV)
