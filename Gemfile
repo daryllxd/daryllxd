@@ -42,6 +42,7 @@ group :development do
   gem 'capistrano-rvm', '~> 0.1.1'
   gem 'capistrano-thin', '~> 1.2.0'
   gem 'guard-shell', '~> 0.7.1'
+  gem 'lol_dba', '2.1.4'
   gem 'rails_layout'
   gem 'rubocop', require: false
   gem 'ruby-growl'
