@@ -1,16 +1,6 @@
 # frozen_string_literal: true
 class ApiController < ApplicationController
-  include ControllerAuthentication
-  include HandleObjectNotFound
-  include HandleRecordInvalid
-  include HandleWrongParams
-  include Errors::RenderUnauthorized
-  include Documentation::ControllerAuthentication
-
-  skip_before_action :verify_authenticity_token
   before_action :ensure_access_token_is_valid
-
-  rescue_from Errors::MissingParams, with: :render_error_if_params_are_not_present
 
   def current_user
     # For development/productivity purposes, you can authenticate yourself by just passing params[:user_id].

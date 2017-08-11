@@ -23,10 +23,5 @@ module ControllerAuthentication
   end
 
   included do
-    rescue_from Errors::InvalidAccessTokenError, with: :deny_access
-
-    rescue_from Errors::InvalidCredentials do
-      render json: { error: 'Invalid credentials' }, status: :unauthorized
-    end
   end
 end
