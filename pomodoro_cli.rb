@@ -3,9 +3,9 @@ require 'thor'
 require 'active_record'
 require 'app/services/pomodoros/boot_cli'
 
-# Ensure all references to timezones are in UTC.
-ENV['TZ'] = 'UTC'
-Time.zone = 'UTC'
+# Ensure all references to timezones are in the EST (my day usually starts at that time anyway).
+
+Time.zone = 'America/New_York'
 
 class PomodoroCli < Thor
   desc 'new', 'Makes a new pomodoro'
@@ -24,7 +24,7 @@ class PomodoroCli < Thor
       tags: resolved_tags
     ).call
 
-    puts Pomodoros::Presenters::ForToday.new.present
+    puts Pomodoros::Presenters::ForDateRange.new.present
   end
 
   desc 'append', 'Appends to the last pomodoro'
@@ -35,13 +35,13 @@ class PomodoroCli < Thor
       duration: options[:duration]
     ).call
 
-    puts Pomodoros::Presenters::ForToday.new.present
+    puts Pomodoros::Presenters::ForDateRange.new.present
   end
 
   desc 'list', 'Shows pomodoros'
 
   def list
-    puts Pomodoros::Presenters::ForToday.new.present
+    puts Pomodoros::Presenters::ForDateRange.new.present
   end
 
   desc 'tags', 'Shows all activity tags'

@@ -3,10 +3,13 @@ require 'terminal-table'
 
 module Pomodoros
   module Presenters
-    class ForToday
+    class ForDateRange
       attr_reader :pomodoros
 
-      def initialize(pomodoros: Pomodoros::Queries::ForDateRange.new.call)
+      def initialize(
+        date_range: DateRangeFactory.yesterday,
+        pomodoros: Pomodoros::Queries::ForDateRange.new(date_range: date_range).call
+      )
         @pomodoros = pomodoros
       end
 
