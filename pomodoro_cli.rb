@@ -38,10 +38,13 @@ class PomodoroCli < Thor
     puts Pomodoros::Presenters::ForDateRange.new.present
   end
 
-  desc 'list', 'Shows pomodoros'
+  desc 'list', 'Shows pomodoros for the date_range.'
+  method_option :date_range, type: :string, aliases: '-u'
 
   def list
-    puts Pomodoros::Presenters::ForDateRange.new.present
+    date_range = Pomodoros::DateRangeResolver.new(date_range_string: options[:date_range]).call
+
+    puts Pomodoros::Presenters::ForDateRange.new(date_range: date_range).present
   end
 
   desc 'tags', 'Shows all activity tags'
