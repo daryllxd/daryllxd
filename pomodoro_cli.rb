@@ -1,11 +1,8 @@
 # frozen_string_literal: true
-require 'thor'
-require 'active_record'
+require 'boot_cli'
+BootCli.new(presumed_symlink: '/usr/local/bin/p').boot
+
 require 'app/services/pomodoros/boot_cli'
-
-# Ensure all references to timezones are in the EST (my day usually starts at that time anyway).
-
-Time.zone = 'America/New_York'
 
 class PomodoroCli < Thor
   desc 'new', 'Makes a new pomodoro'

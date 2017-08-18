@@ -1,11 +1,8 @@
 # frozen_string_literal: true
-require 'thor'
-require 'active_record'
-require 'app/services/financerinos/boot_cli'
+require 'boot_cli'
+BootCli.new(presumed_symlink: '/usr/local/bin/exp').boot
 
-# Ensure all references to timezones are in UTC.
-ENV['TZ'] = 'UTC'
-Time.zone = 'UTC'
+require 'app/services/financerinos/boot_cli'
 
 class FinancerinosCli < Thor
   desc 'new', 'Makes a new expense'
