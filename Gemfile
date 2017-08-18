@@ -18,6 +18,7 @@ gem 'terminal-table'
 gem 'thin'
 gem 'thor', '0.19.4'
 gem 'watir', '6.3.0', require: false
+gem 'whenever', '0.9.7', require: false
 
 group :development, :test do
   gem 'bullet', '5.5.1'

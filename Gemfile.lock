@@ -91,6 +91,7 @@ GEM
       thin (~> 1.6)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
+    chronic (0.10.2)
     clipboard (1.1.1)
     codeclimate-test-reporter (1.0.5)
       simplecov
@@ -332,6 +333,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    whenever (0.9.7)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -386,6 +389,7 @@ DEPENDENCIES
   timecop
   watir (= 6.3.0)
   web-console (~> 2.0)
+  whenever (= 0.9.7)
 
 RUBY VERSION
    ruby 2.4.1p111
