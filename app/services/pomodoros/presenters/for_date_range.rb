@@ -7,7 +7,7 @@ module Pomodoros
       attr_reader :pomodoros
 
       def initialize(
-        date_range: DateRangeFactory.yesterday,
+        date_range: DateRangeFactory.today,
         pomodoros: Pomodoros::Queries::ForDateRange.new(date_range: date_range).call
       )
         @pomodoros = pomodoros
