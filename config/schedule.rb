@@ -24,6 +24,7 @@ set :environment, 'development'
 env :PATH, ENV['PATH']
 
 every 180.minutes do
+  rake 'db:backup'
   rake 'growler:notify'
 end
 
