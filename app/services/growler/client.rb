@@ -4,7 +4,8 @@ module Growler
     def notify
       g = Growl.new('localhost', 'Daryllxd Growler')
       g.add_notification('haha')
-      g.notify('haha', 'hoho', 'yolo')
+      g.notify('haha', 'hoho', 'Did you write things today?')
+      g.notify('haha', 'hoho', 'Did you take photos of your food today?')
     end
   end
 end
