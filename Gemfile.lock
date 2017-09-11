@@ -133,6 +133,9 @@ GEM
     gherkin (4.1.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.4.4)
+      rails
+    graphql (1.0.0)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -359,6 +362,8 @@ DEPENDENCIES
   factory_girl_rails
   faker (~> 1.7.3)
   fuubar (= 2.2.0)
+  graphiql-rails
+  graphql (~> 1.0.0)
   guard-shell (~> 0.7.1)
   json_spec (= 1.1.4)
   launchy

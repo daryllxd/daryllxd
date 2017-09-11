@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 
 module Daryllxd
   class Application < Rails::Application
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib #{Rails.root.join('app', 'graphs', 'types')})
 
     config.generators do |g|
       g.test_framework(:rspec, fixtures: true, view_specs: false, helper_specs: false,

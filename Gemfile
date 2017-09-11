@@ -7,6 +7,8 @@ gem 'rails', '5.0.2'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
 gem 'bootsnap'
 gem 'dotenv', require: false
+gem 'graphql', '~> 1.0.0'
+gem 'graphiql-rails'
 gem 'pg', '0.19.0'
 gem 'powerpack'
 gem 'rack-cors', require: 'rack/cors'
