@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915195842) do
+ActiveRecord::Schema.define(version: 20170916190031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20170915195842) do
     t.string   "string",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "expense_budget_tags", force: :cascade do |t|
+    t.integer  "expense_id",    null: false
+    t.integer  "budget_tag_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["budget_tag_id"], name: "index_expense_budget_tags_on_budget_tag_id", using: :btree
+    t.index ["expense_id"], name: "index_expense_budget_tags_on_expense_id", using: :btree
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -61,6 +70,8 @@ ActiveRecord::Schema.define(version: 20170915195842) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "expense_budget_tags", "budget_tags"
+  add_foreign_key "expense_budget_tags", "expenses"
   add_foreign_key "pomodoro_activity_tags", "activity_tags"
   add_foreign_key "pomodoro_activity_tags", "pomodoros"
 end
