@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  pomodoro:
+    create:
+      error_no_tags: "Cannot create, no tags"
