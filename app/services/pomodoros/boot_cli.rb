@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 # Loads everything needed for the Pomodoro sub-app
-require 'app/services/pomodoros/constants'
 require 'app/models/date_range_factory'
 require 'app/models/pomodoro'
 require 'app/models/pomodoro_activity_tag'
 require 'app/models/date_range'
 require 'app/models/activity_tag'
+require 'app/models/pomodoros/queries/for_date_range'
 require 'app/services/pomodoros/date_range_resolver'
 require 'app/services/pomodoros/tag_resolver'
 require 'app/services/pomodoros/create_service'
 require 'app/services/pomodoros/append_service'
-require 'app/services/pomodoros/queries/for_date_range'
 require 'app/errors/daryllxd_error'
 require 'app/services/pomodoros/errors/generic_error'
 require 'app/services/pomodoros/presenters/activity_tags'
