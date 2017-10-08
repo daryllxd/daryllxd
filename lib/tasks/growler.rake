@@ -2,6 +2,6 @@
 namespace :growler do
   desc "TODO"
   task notify: :environment do
-    Growler::Client.new.notify
+    Growler::Client.instance.notify
   end
 end

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
+require 'ruby-growl'
+require 'singleton'
+
 module Growler
   class Client
+    include Singleton
     def notify
       g = Growl.new('localhost', 'Daryllxd Growler')
       g.add_notification('haha')
