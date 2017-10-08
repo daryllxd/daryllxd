@@ -9,6 +9,7 @@ gem 'bootsnap'
 gem 'dotenv', require: false
 gem 'graphql', '~> 1.0.0'
 gem 'graphiql-rails'
+gem 'memoist'
 gem 'pg', '0.19.0'
 gem 'powerpack'
 gem 'rack-cors', require: 'rack/cors'

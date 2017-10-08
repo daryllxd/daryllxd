@@ -10,6 +10,7 @@ class BootCli
     require 'rb-readline'
     require 'pry-byebug'
     require 'thor'
+    require 'memoist'
     require 'active_record'
     require 'app/models/application_record'
     # Ensure all references to timezones are in the EST (my day usually starts at that time anyway).

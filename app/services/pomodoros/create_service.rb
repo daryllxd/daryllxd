@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Pomodoros
   class CreateService
+    extend Memoist
+
     attr_reader :description, :duration, :tags
 
     def initialize(description:, duration:, tags:)
@@ -16,14 +18,14 @@ module Pomodoros
         create_pomodoro
         create_tags
 
-        return created_pomodoro
+        return create_pomodoro
       end
     end
 
     private
 
     def create_pomodoro
-      @memoized_created_pomodoro ||= Pomodoro.create(create_pomodoro_attributes)
+      Pomodoro.create(create_pomodoro_attributes)
     end
 
     def create_pomodoro_attributes
@@ -35,12 +37,10 @@ module Pomodoros
 
     def create_tags
       tags.each do |tag|
-        created_pomodoro.pomodoro_activity_tags.create(activity_tag: tag)
+        create_pomodoro.pomodoro_activity_tags.create(activity_tag: tag)
       end
     end
 
-    def created_pomodoro
-      @memoized_created_pomodoro
-    end
+    memoize :create_pomodoro
   end
 end
