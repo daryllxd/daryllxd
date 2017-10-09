@@ -11,7 +11,7 @@ RSpec.describe Pomodoros::Queries::ForDateRange, type: :query do
     end
 
     it 'applies a created_at timezone to be in the Pomodoro Timezone' do
-      expect(found_pomodoros.to_sql).to include Pomodoros::Constants::TIMEZONE_BASIS
+      expect(found_pomodoros.to_sql).to include Constants::TIMEZONE_BASIS
     end
 
     it 'loads activity tags' do

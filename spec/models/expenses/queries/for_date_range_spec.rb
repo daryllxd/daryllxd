@@ -11,7 +11,7 @@ RSpec.describe Expenses::Queries::ForDateRange, type: :query do
     end
 
     it 'applies a created_at timezone to be in the expense Timezone' do
-      expect(found_expenses.to_sql).to include expenses::Constants::TIMEZONE_BASIS
+      expect(found_expenses.to_sql).to include Constants::TIMEZONE_BASIS
     end
 
     it 'loads activity tags' do
