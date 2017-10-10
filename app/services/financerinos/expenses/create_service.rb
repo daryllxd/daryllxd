@@ -2,6 +2,8 @@
 module Financerinos
   module Expenses
     class CreateService
+      extend Memoist
+
       attr_reader :description, :amount, :tags
 
       def initialize(description:, amount:, tags: [])
@@ -15,15 +17,18 @@ module Financerinos
           create_expense
           create_tags
 
-          return DaryllxdError.new unless created_expense.valid?
-          return created_expense
+          if create_expense.valid?
+            create_expense
+          else
+            DaryllxdError.new
+          end
         end
       end
 
       private
 
       def create_expense
-        @memoized_created_expense ||= Expense.create(create_expense_attributes)
+        Expense.create(create_expense_attributes)
       end
 
       def create_expense_attributes
@@ -35,13 +40,11 @@ module Financerinos
 
       def create_tags
         tags.each do |tag|
-          created_expense.expense_budget_tags.create(budget_tag: tag)
+          create_expense.expense_budget_tags.create(budget_tag: tag)
         end
       end
 
-      def created_expense
-        @memoized_created_expense
-      end
+      memoize :create_expense
     end
   end
 end

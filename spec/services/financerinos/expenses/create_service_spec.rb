@@ -13,6 +13,7 @@ RSpec.describe Financerinos::Expenses::CreateService, type: :service do
 
       new_expense = execute.call(new_expense_attributes)
 
+      expect(Expense.count).to eq 1
       expect(new_expense).to be_valid
       expect(new_expense.description).to eq 'Stuff'
       expect(new_expense.amount).to eq 5
@@ -29,6 +30,7 @@ RSpec.describe Financerinos::Expenses::CreateService, type: :service do
 
       new_expense = execute.call(new_expense_attributes)
 
+      expect(Expense.count).to eq 0
       expect(new_expense).not_to be_valid
       expect(new_expense).to be_a_kind_of(DaryllxdError)
     end
