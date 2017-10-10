@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-RSpec.describe Pomodoros::DateRangeResolver, type: :service do
+RSpec.describe Cli::DateRangeResolver, type: :service do
   context 'happy path' do
     context 'yesterday' do
       it 'resolves' do

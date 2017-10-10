@@ -11,6 +11,10 @@ class PomodoroCli < Thor
   method_option :tags, type: :string, aliases: '-t'
 
   def new
+    # Pomodoros::CreateInteractor.new(
+
+    # ).call
+
     resolved_tags = Pomodoros::TagResolver.new(
       tag_string: options[:tags]
     ).call
@@ -39,7 +43,7 @@ class PomodoroCli < Thor
   method_option :date_range, type: :string, aliases: '-u'
 
   def list
-    date_range = Pomodoros::DateRangeResolver.new(date_range_string: options[:date_range]).call
+    date_range = Cli::DateRangeResolver.new(date_range_string: options[:date_range]).call
 
     puts Pomodoros::Presenters::ForDateRange.new(date_range: date_range).present
   end

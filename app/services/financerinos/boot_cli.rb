@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 # Loads everything needed for the Financerinos sub-app
+require 'app/services/cli/date_range_resolver'
 require 'app/models/date_range_factory'
+require 'app/models/constants'
 require 'app/models/date_range'
 require 'app/models/expense'
 require 'app/models/expense_budget_tag'

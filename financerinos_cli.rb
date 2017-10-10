@@ -24,10 +24,13 @@ class FinancerinosCli < Thor
     puts 'Expense logged!'
   end
 
-  desc 'list', 'Show all expenses'
+  desc 'list', 'Shows expenses for the date_range.'
+  method_option :date_range, type: :string, aliases: '-u'
 
   def list
-    Expense.all.each do |ex|
+    date_range = Cli::DateRangeResolver.new(date_range_string: options[:date_range]).call
+
+    Expenses::Queries::ForDateRange.new(date_range: date_range).call.each do |ex|
       puts "#{ex.description}, #{ex.amount}"
     end
   end
