@@ -82,3 +82,9 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+require 'test_prof'
+
+TestProf::RubyProf.configure do |config|
+  config.printer = :graph_html
+end

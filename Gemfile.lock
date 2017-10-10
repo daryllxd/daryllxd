@@ -268,6 +268,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-growl (4.1)
       uuid (~> 2.3, >= 2.3.5)
+    ruby-prof (0.16.2)
     ruby-progressbar (1.8.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
@@ -306,6 +307,7 @@ GEM
       net-ssh (>= 2.8.0)
     sshkit-interactive (0.2.0)
       sshkit (~> 1.9)
+    stackprof (0.2.10)
     stateful_enum (0.4.0)
     stronger_parameters (2.6.1)
       actionpack (>= 3.2, < 5.1)
@@ -313,6 +315,7 @@ GEM
     temple (0.7.7)
     terminal-table (1.7.3)
       unicode-display_width (~> 1.1.1)
+    test-prof (0.4.0)
     thin (1.7.0)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -383,14 +386,17 @@ DEPENDENCIES
   rspec-rails
   rubocop
   ruby-growl
+  ruby-prof (>= 0.16.0)
   shoulda-matchers (~> 3.1)
   simplecov
   slim-rails
   spring
   spring-commands-rspec
+  stackprof (>= 0.2.9)
   stateful_enum
   stronger_parameters
   terminal-table
+  test-prof (= 0.4.0)
   thin
   thor (= 0.19.4)
   timecop
