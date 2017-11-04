@@ -1,0 +1,3 @@
+[submodule "daryllxd-db-backup"]
+	path = daryllxd-db-backup
+	url = git@github.com:daryllxd/daryllxd-db-backup.git
