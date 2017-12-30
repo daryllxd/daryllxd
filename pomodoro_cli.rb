@@ -11,21 +11,13 @@ class PomodoroCli < Thor
   method_option :tags, type: :string, aliases: '-t'
 
   def new
-    # Pomodoros::CreateInteractor.new(
+    new_pomodoros = Pomodoros::CreateInteractor.new(options.symbolize_keys).call
 
-    # ).call
-
-    resolved_tags = Pomodoros::TagResolver.new(
-      tag_string: options[:tags]
-    ).call
-
-    Pomodoros::CreateService.new(
-      description: options[:description],
-      duration: options[:duration],
-      tags: resolved_tags
-    ).call
-
-    puts Pomodoros::Presenters::ForDateRange.new.present
+    if new_pomodoros.valid?
+      puts Pomodoros::Presenters::ForDateRange.new.present
+    else
+      puts new_pomodoros.to_s
+    end
   end
 
   desc 'append', 'Appends to the last pomodoro'
