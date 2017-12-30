@@ -12,11 +12,8 @@ RSpec.describe Pomodoros::CreateService, type: :service do
       )
     end
 
-    it 'creates a pomodoro' do
+    it 'creates pomodoros and tags' do
       expect(Pomodoro.count).to eq 1
-    end
-
-    it 'creates a tag' do
       expect(created_pomodoro.activity_tags).to match_array(
         [programming_activity_tag, daryllxd_activity_tag]
       )
@@ -24,19 +21,34 @@ RSpec.describe Pomodoros::CreateService, type: :service do
   end
 
   context 'errors' do
-    context 'no tags' do
-      let!(:created_pomodoro) do
-        execute.call(
-          duration: 25,
-          description: 'Did things',
+    context 'AR error on the Pomodoro (negative duration)' do
+      it 'returns an error specifying that a tag is needed' do
+        created_pomodoro = execute.call(
+          duration: -25,
+          description: '',
           tags: []
         )
-      end
 
-      it 'returns an error specifying that a tag is needed' do
         expect(Pomodoro.count).to eq 0
         expect(created_pomodoro).not_to be_valid
-        expect(created_pomodoro.message).to include('no tags')
+        expect(created_pomodoro.to_s).to include('Validation failed')
+      end
+    end
+
+    context 'tags error' do
+      it 'returns an error specifying that a tag is needed' do
+        expect_any_instance_of(described_class).to receive(:create_tags!).and_return(
+          double(valid?: false, errors: double(valid?: false))
+        )
+
+        created_pomodoro = execute.call(
+          duration: 25,
+          description: 'Did things',
+          tags: ['Wutface']
+        )
+
+        expect(Pomodoro.count).to eq 0
+        expect(created_pomodoro).not_to be_valid
       end
     end
   end

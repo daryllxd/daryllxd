@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 module Pomodoros
-  class CreateService
+  class CreateService < Pomodoros::BaseService
     extend Memoist
 
-    attr_reader :description, :duration, :tags
+    attr_reader :description, :duration, :tags, :errors
 
+    # tags: PomodoroActivityTag
     def initialize(description:, duration:, tags:)
       @description = description
       @duration = duration
@@ -12,20 +13,35 @@ module Pomodoros
     end
 
     def call
-      return DaryllxdError.new(I18n.t('pomodoro.create.error_no_tags')) unless tags.present?
-
       ActiveRecord::Base.transaction do
-        create_pomodoro
-        create_tags
+        steps.map do |step|
+          result = step.call
 
-        return create_pomodoro
+          unless result.valid?
+            @errors = result.errors
+            raise ActiveRecord::Rollback
+          end
+        end
+
+        return create_pomodoro!
       end
+
+      return errors
+    rescue StandardError => e
+      DaryllxdError.new(e)
+    end
+
+    def steps
+      [
+        proc { create_pomodoro! },
+        proc { create_tags! }
+      ]
     end
 
     private
 
-    def create_pomodoro
-      Pomodoro.create(create_pomodoro_attributes)
+    def create_pomodoro!
+      Pomodoro.create!(create_pomodoro_attributes)
     end
 
     def create_pomodoro_attributes
@@ -35,12 +51,12 @@ module Pomodoros
       }
     end
 
-    def create_tags
+    def create_tags!
       tags.each do |tag|
-        create_pomodoro.pomodoro_activity_tags.create(activity_tag: tag)
+        create_pomodoro!.pomodoro_activity_tags.create!(activity_tag: tag)
       end
     end
 
-    memoize :create_pomodoro
+    memoize :create_pomodoro!
   end
 end

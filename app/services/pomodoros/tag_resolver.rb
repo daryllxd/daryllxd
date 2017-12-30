@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Pomodoros
-  class TagResolver
+  class TagResolver < ::Pomodoros::BaseService
     attr_reader :tag_string
 
     def initialize(tag_string:)
