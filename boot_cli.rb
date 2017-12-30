@@ -7,12 +7,7 @@ class BootCli
   end
 
   def boot
-    require 'rb-readline'
-    require 'pry-byebug'
-    require 'thor'
-    require 'memoist'
-    require 'active_record'
-    require 'app/models/application_record'
+    shared_booted_files.each { |file| require file }
     # Ensure all references to timezones are in the EST (my day usually starts at that time anyway).
     Time.zone = 'America/New_York'
 
@@ -27,5 +22,19 @@ class BootCli
 
     db_config = YAML.safe_load(File.open(db_config_file))['development']
     ActiveRecord::Base.establish_connection(db_config)
+  end
+
+  private
+
+  def shared_booted_files
+    [
+      'rb-readline',
+      'pry-byebug',
+      'thor',
+      'memoist',
+      'active_record',
+      'config/initializers/enumerable',
+      'app/models/application_record'
+    ]
   end
 end
