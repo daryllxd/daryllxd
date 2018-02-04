@@ -30,8 +30,11 @@ class FinancerinosCli < Thor
   def list
     date_range = Cli::DateRangeResolver.new(date_range_string: options[:date_range]).call
 
-    Expenses::Queries::ForDateRange.new(date_range: date_range).call.each do |ex|
-      puts "#{ex.description}, #{ex.amount}"
-    end
+    expenses = Expenses::Queries::ForDateRange.new(date_range: date_range).call
+
+    puts Financerinos::Expenses::Presenters::ForDateRange.new(
+      date_range: date_range,
+      expenses: expenses
+    ).call
   end
 end
