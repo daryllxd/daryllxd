@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916190959) do
+ActiveRecord::Schema.define(version: 20180204204354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170916190959) do
     t.integer  "amount",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.date     "spent_on",    null: false
   end
 
   create_table "pomodoro_activity_tags", force: :cascade do |t|

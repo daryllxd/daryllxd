@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe Growler::Client do
   it 'is a singleton' do
     expect { described_class.new }.to raise_error(NoMethodError)
