@@ -13,16 +13,32 @@ RSpec.describe Financerinos::Expenses::CreateService, type: :service do
 
       new_expense = execute.call(new_expense_attributes)
 
-      expect(Expense.count).to eq 1
       expect(new_expense).to be_valid
+      expect(new_expense).to be_persisted
       expect(new_expense.description).to eq 'Stuff'
       expect(new_expense.amount).to eq 5
       expect(new_expense.budget_tags).to match_array([food_tag, uber_tag])
     end
+
+    context 'custom attributes' do
+      it 'custom spent_on date works' do
+        new_expense_attributes = {
+          description: 'Stuff I did yesterday',
+          amount: 4,
+          spent_on: Date.current - 1.day
+        }
+
+        new_expense = execute.call(new_expense_attributes)
+
+        expect(new_expense).to be_valid
+        expect(new_expense).to be_persisted
+        expect(new_expense.spent_on).to eq(Date.current - 1.day)
+      end
+    end
   end
 
   context 'errors' do
-    it 'returns an error' do
+    it 'error in amount--returns an error' do
       new_expense_attributes = {
         description: 'Stuff',
         amount: -5

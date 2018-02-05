@@ -4,12 +4,13 @@ module Financerinos
     class CreateService
       extend Memoist
 
-      attr_reader :description, :amount, :tags
+      attr_reader :description, :amount, :tags, :date, :spent_on
 
-      def initialize(description:, amount:, tags: [])
+      def initialize(description:, amount:, tags: [], spent_on: Date.current)
         @description = description
         @amount = amount
         @tags = tags
+        @spent_on = spent_on
       end
 
       def call
@@ -34,7 +35,8 @@ module Financerinos
       def create_expense_attributes
         {
           description: description,
-          amount: amount
+          amount: amount,
+          spent_on: spent_on
         }
       end
 
