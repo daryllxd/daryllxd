@@ -14,23 +14,19 @@ module Pomodoros
       end
 
       def present
-        table = Terminal::Table.new(terminal_table_params) do |t|
-          t.rows = presented_pomodoros
-        end
-
-        table << :separator
-        table << total_time_for_today
-
-        table
+        [
+          total_time_table
+        ]
       end
 
       private
 
-      def terminal_table_params
-        {
+      def total_time_table
+        Pomodoros::Presenters::TerminalTable.new(
           title: "Today's Pomodoros",
-          headings: %w(Task Minutes Tags)
-        }
+          headings: %w(Task Minutes Tags),
+          rows: presented_pomodoros + [:separator] + [total_time_for_today]
+        ).present
       end
 
       def presented_pomodoros
