@@ -24,14 +24,19 @@ module Pomodoros
       def total_time_table
         Pomodoros::Presenters::TerminalTable.new(
           title: "Today's Pomodoros",
-          headings: %w(Task Minutes Tags),
+          headings: headings,
           rows: presented_pomodoros + [:separator] + [total_time_for_today]
         ).present
       end
 
+      def headings
+        ['Task', 'Minutes Spent', 'Tagged as', 'Created at', 'Expected time of start']
+      end
+
       def presented_pomodoros
         pomodoros.map do |pomodoro|
-          [pomodoro.description, pomodoro.duration, sorted_tags_for(pomodoro)]
+          [pomodoro.description, pomodoro.duration, sorted_tags_for(pomodoro), pomodoro.created_at.localtime,
+           pomodoro.created_at.localtime - pomodoro.duration.minutes]
         end
       end
 
