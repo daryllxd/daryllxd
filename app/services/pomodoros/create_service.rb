@@ -8,7 +8,7 @@ module Pomodoros
     # tags: PomodoroActivityTag
     def initialize(description:, duration:, tags:)
       @description = description
-      @duration = duration
+      @duration = duration.to_i
       @tags = tags
     end
 
@@ -47,7 +47,8 @@ module Pomodoros
     def create_pomodoro_attributes
       {
         description: description,
-        duration: duration
+        duration: duration,
+        started_at: DateTime.current - duration.minutes
       }
     end
 

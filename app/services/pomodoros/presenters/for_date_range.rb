@@ -30,13 +30,15 @@ module Pomodoros
       end
 
       def headings
-        ['Task', 'Minutes Spent', 'Tagged as', 'Created at', 'Expected time of start']
+        ['Task', 'Minutes Spent', 'Tagged as', 'Started at', 'Ended at']
       end
 
       def presented_pomodoros
         pomodoros.map do |pomodoro|
-          [pomodoro.description, pomodoro.duration, sorted_tags_for(pomodoro), pomodoro.created_at.localtime,
-           pomodoro.created_at.localtime - pomodoro.duration.minutes]
+          [
+            pomodoro.description, pomodoro.duration, sorted_tags_for(pomodoro),
+            pomodoro.started_at.localtime.strftime('%R'), pomodoro.ended_at.strftime('%R')
+          ]
         end
       end
 

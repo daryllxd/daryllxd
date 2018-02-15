@@ -8,6 +8,7 @@
 #  description :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  started_at  :datetime         not null
 #
 
 class Pomodoro < ApplicationRecord
@@ -16,4 +17,8 @@ class Pomodoro < ApplicationRecord
 
   has_many :pomodoro_activity_tags, dependent: :destroy
   has_many :activity_tags, through: :pomodoro_activity_tags
+
+  def ended_at
+    started_at.localtime + duration.minutes
+  end
 end
