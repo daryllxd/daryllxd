@@ -31,6 +31,14 @@ class PomodoroCli < Thor
     puts Pomodoros::Presenters::ForDateRange.new.present
   end
 
+  desc 'destroy', 'Destroys the last pomodoro'
+
+  def destroy
+    Pomodoros::DestroyService.new.call
+
+    puts Pomodoros::Presenters::ForDateRange.new.present
+  end
+
   desc 'list', 'Shows pomodoros for the date_range.'
   method_option :date_range, type: :string, aliases: '-u'
 
