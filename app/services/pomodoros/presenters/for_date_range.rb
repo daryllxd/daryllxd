@@ -43,7 +43,7 @@ module Pomodoros
       end
 
       def total_time_for_today
-        ['Total time for today:', presented_pomodoros.sum(&:second), '']
+        ['Total time for today:', presented_pomodoros.sum(&:second), '', '', '']
       end
 
       def sorted_tags_for(pomodoro)
