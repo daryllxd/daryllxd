@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 RSpec.describe Pomodoros::AppendService, type: :service do
-  let!(:execute) do
-    proc { |params| described_class.new(params).call }
-  end
-
   let!(:created_pomodoro) do
     create(:pomodoro, duration: 25)
   end
