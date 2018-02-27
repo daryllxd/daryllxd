@@ -24,6 +24,9 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_attr (0.10.3)
+      activemodel (>= 3.0.2, < 6.0)
+      activesupport (>= 3.0.2, < 6.0)
     activejob (5.0.2)
       activesupport (= 5.0.2)
       globalid (>= 0.3.6)
@@ -45,6 +48,7 @@ GEM
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
+    anyway_config (1.2.0)
     arel (7.1.4)
     aruba (0.14.2)
       childprocess (~> 0.5.6)
@@ -150,6 +154,8 @@ GEM
       guard (>= 2.0.0)
       guard-compat (~> 1.0)
     i18n (0.8.6)
+    isolator (0.2.1)
+      sniffer (~> 0.3.1)
     json (2.0.3)
     json_spec (1.1.4)
       multi_json (~> 1.0)
@@ -291,6 +297,9 @@ GEM
       railties (>= 3.1)
       slim (~> 3.0)
     slop (3.6.0)
+    sniffer (0.3.1)
+      active_attr (>= 0.10.2)
+      anyway_config (~> 1.0)
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
@@ -369,13 +378,14 @@ DEPENDENCIES
   graphiql-rails
   graphql (~> 1.0.0)
   guard-shell (~> 0.7.1)
+  isolator
   json_spec (= 1.1.4)
   launchy
   lol_dba (= 2.1.4)
   memoist
   pg (= 0.19.0)
   powerpack
-  pry-byebug
+  pry-byebug (= 3.4.2)
   pry-rails
   rack-cors
   rails (= 5.0.2)
@@ -408,4 +418,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.3
+   1.16.0

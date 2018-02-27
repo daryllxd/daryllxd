@@ -26,13 +26,14 @@ gem 'whenever', '0.9.7', require: false
 group :development, :test do
   gem 'bullet', '5.5.1'
   gem 'clipboard'
+  gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.7.3'
-  gem 'codeclimate-test-reporter', require: false
+  gem 'isolator'
   gem 'rspec', '3.5.0'
   gem 'rspec-rails'
   gem 'rb-readline'
-  gem 'pry-byebug'
+  gem 'pry-byebug', '3.4.2'
   gem 'pry-rails'
   gem 'spring'
 end
