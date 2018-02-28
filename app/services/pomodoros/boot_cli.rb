@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 # Loads everything needed for the Pomodoro sub-app
+require 'dry-types'
+require 'dry-struct'
+
+module Types
+  include Dry::Types.module
+end
+
 require 'app/services/cli/date_range_resolver'
 require 'app/models/date_range_factory'
 require 'app/models/constants'

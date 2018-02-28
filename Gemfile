@@ -7,6 +7,7 @@ gem 'rails', '5.0.2'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
 gem 'bootsnap'
 gem 'dotenv', require: false
+gem 'dry-struct', require: false
 gem 'graphql', '~> 1.0.0'
 gem 'graphiql-rails'
 gem 'memoist'
@@ -29,7 +30,6 @@ group :development, :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.7.3'
-  gem 'isolator'
   gem 'rspec', '3.5.0'
   gem 'rspec-rails'
   gem 'rb-readline'
