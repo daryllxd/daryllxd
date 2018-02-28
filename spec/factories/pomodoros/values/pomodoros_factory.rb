@@ -4,5 +4,10 @@
 FactoryGirl.define do
   factory :pv_pomodoro, class: Pomodoros::Values::Pomodoro do
     initializes_as_value_object
+
+    sequence(:id)
+    description   { 'Basket weaving' }
+    duration      { 5 }
+    started_at    { DateTime.current }
   end
 end
