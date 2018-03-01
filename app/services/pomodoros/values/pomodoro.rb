@@ -6,10 +6,10 @@ module Pomodoros
       attribute :id, Types::Strict::Int
       attribute :duration, Types::Strict::Int.constrained(gt: 0)
       attribute :description, Types::Strict::String
-      attribute :started_at, Types::Strict::DateTime
+      attribute :started_at, Types::Strict::Time
 
       def ended_at
-        started_at.localtime.to_datetime + duration.minutes
+        started_at + duration.minutes
       end
     end
   end
