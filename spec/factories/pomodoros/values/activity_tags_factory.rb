@@ -8,5 +8,9 @@ FactoryGirl.define do
     trait :programming do
       name { 'Programming' }
     end
+
+    trait :writing do
+      name { 'Writing' }
+    end
   end
 end

@@ -9,5 +9,13 @@ FactoryGirl.define do
     description   { 'Basket weaving' }
     duration      { 5 }
     started_at    { Time.now }
+
+    trait :programming do
+      activity_tags { [create(:pv_activity_tag, :programming)] }
+    end
+
+    trait :writing do
+      activity_tags { [create(:pv_activity_tag, :writing)] }
+    end
   end
 end

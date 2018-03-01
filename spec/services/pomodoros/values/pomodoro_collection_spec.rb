@@ -21,4 +21,32 @@ RSpec.describe Pomodoros::Values::PomodoroCollection do
       end
     end
   end
+
+  context '#duration_for' do
+    context 'happy path' do
+      it 'should get durations of the tags that were passed in' do
+        pomo_collection = create(
+          :pv_pomodoro_collection, pomodoros: [
+            create(:pv_pomodoro, :programming, duration: 20),
+            create(:pv_pomodoro, :programming, duration: 30),
+            create(:pv_pomodoro, :writing, duration: 40)
+          ]
+        )
+
+        expect(pomo_collection.duration_for('Programming')).to eq(50)
+        expect(pomo_collection.duration_for('Writing')).to eq(40)
+        expect(pomo_collection.duration_for('Swagging')).to eq(0)
+        expect(pomo_collection.duration_for(nil)).to eq(0)
+      end
+    end
+
+    context 'no pomodoros' do
+      it 'works' do
+        pomo_collection = create(:pv_pomodoro_collection, pomodoros: [])
+
+        expect(pomo_collection.duration_for('Programming')).to eq(0)
+        expect(pomo_collection.duration_for(nil)).to eq(0)
+      end
+    end
+  end
 end
