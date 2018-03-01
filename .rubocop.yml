@@ -40,7 +40,7 @@ Metrics/LineLength:
   Exclude:
     - '**/documentation/**/*/'
 
-Style/IndentArray:
+Layout/IndentArray:
   Exclude:
     - '**/*_spec.rb'
 
