@@ -7,7 +7,7 @@ gem 'rails', '5.0.2'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
 gem 'bootsnap'
 gem 'dotenv', require: false
-gem 'dry-struct', require: false
+gem 'dry-struct'
 gem 'graphql', '~> 1.0.0'
 gem 'graphiql-rails'
 gem 'memoist'
@@ -16,7 +16,6 @@ gem 'powerpack'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rake', '11.3.0'
 gem 'slim-rails'
-gem 'stateful_enum'
 gem 'stronger_parameters'
 gem 'terminal-table'
 gem 'thin'
@@ -49,7 +48,7 @@ group :development do
   gem 'guard-shell', '~> 0.7.1'
   gem 'lol_dba', '2.1.4'
   gem 'rails_layout'
-  gem 'rubocop', require: false
+  gem 'rubocop', '0.52.1', require: false
   gem 'ruby-growl'
   gem 'web-console', '~> 2.0'
   gem 'spring-commands-rspec'
