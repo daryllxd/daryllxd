@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe Pomodoros::Entities::PomodoroCollection do
+  context '#enumerable' do
+    it 'iterates over the pomodoros inside' do
+      pomo1 = create(:pe_pomodoro, description: 'Pants')
+      pomo_collection = described_class.new(pomodoros: [pomo1])
+
+      expect(pomo_collection.map(&:description)).to match_array(['Pants'])
+    end
+  end
+
   context '#duration' do
     context 'contains pomodoros' do
       it 'adds up the durations of all its constituent pomos' do

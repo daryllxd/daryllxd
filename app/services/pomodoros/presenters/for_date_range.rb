@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'terminal-table'
 
 module Pomodoros
@@ -8,7 +9,7 @@ module Pomodoros
 
       def initialize(
         date_range: DateRangeFactory.today,
-        pomodoros: Pomodoros::Queries::ForDateRange.new(date_range: date_range).call
+        pomodoros: Pomodoros::Aggregates::ForDateRange.new(date_range: date_range).pomodoro_collection
       )
         @pomodoros = pomodoros
       end
@@ -43,7 +44,7 @@ module Pomodoros
       end
 
       def total_time_for_today
-        ['Total time for today:', presented_pomodoros.sum(&:second), '', '', '']
+        ['Total time for today:', pomodoros.duration, "Programming: #{pomodoros.duration_for('Programming')}", '', '']
       end
 
       def sorted_tags_for(pomodoro)

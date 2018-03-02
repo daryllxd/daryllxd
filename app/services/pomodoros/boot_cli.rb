@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Loads everything needed for the Pomodoro sub-app
 require 'dry-types'
 require 'dry-struct'
@@ -22,6 +23,10 @@ require 'app/services/pomodoros/create_service'
 require 'app/services/pomodoros/destroy_service'
 require 'app/services/pomodoros/tag_resolver'
 require 'app/errors/daryllxd_error'
+require 'app/services/pomodoros/entities/activity_tag'
+require 'app/services/pomodoros/entities/pomodoro'
+require 'app/services/pomodoros/entities/pomodoro_collection'
+require 'app/services/pomodoros/aggregates/for_date_range'
 require 'app/services/pomodoros/errors/generic_error'
 require 'app/services/pomodoros/presenters/activity_tags'
 require 'app/services/pomodoros/presenters/for_date_range'
