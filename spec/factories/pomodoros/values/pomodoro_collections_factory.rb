@@ -1,8 +1,9 @@
 # frozen_string_literal: true
-# Namespace Pomodoro::Values  to `pv`.
+
+# Namespace Pomodoro::Entities  to `pv`.
 
 FactoryGirl.define do
-  factory :pv_pomodoro_collection, class: Pomodoros::Values::PomodoroCollection do
+  factory :pe_pomodoro_collection, class: Pomodoros::Entities::PomodoroCollection do
     initializes_as_value_object
 
     pomodoros []

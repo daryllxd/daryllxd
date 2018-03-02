@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Pomodoros
-  module Values
+  module Entities
     class PomodoroCollection < Dry::Struct
-      attribute :pomodoros, Types::Strict::Array.of(Pomodoros::Values::Pomodoro)
+      attribute :pomodoros, Types::Strict::Array.of(Pomodoros::Entities::Pomodoro)
 
       def duration
         pomodoros.sum(&:duration)

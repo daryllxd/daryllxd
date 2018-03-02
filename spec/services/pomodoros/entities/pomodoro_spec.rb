@@ -2,7 +2,7 @@
 
 require 'timecop'
 
-RSpec.describe Pomodoros::Values::Pomodoro do
+RSpec.describe Pomodoros::Entities::Pomodoro do
   context 'initializer' do
     context 'happy path' do
       it 'works, and activity tags are empty' do
@@ -10,7 +10,7 @@ RSpec.describe Pomodoros::Values::Pomodoro do
           id: 1, description: 'haha', duration: 5, started_at: Time.current
         )
 
-        expect(new_pomodoro).to be_a_kind_of(Pomodoros::Values::Pomodoro)
+        expect(new_pomodoro).to be_a_kind_of(Pomodoros::Entities::Pomodoro)
         expect(new_pomodoro.activity_tags).to be_empty
       end
     end
@@ -19,7 +19,7 @@ RSpec.describe Pomodoros::Values::Pomodoro do
   context '#ended_at' do
     it 'adds the duration' do
       Timecop.freeze(Time.local(2015, 2, 3, 0, 0, 0)) do
-        pomo = create(:pv_pomodoro, id: 1, description: 'haha', duration: 5, started_at: Time.now)
+        pomo = create(:pe_pomodoro, id: 1, description: 'haha', duration: 5, started_at: Time.now)
 
         expect(pomo.ended_at).to eq(Time.new(2015, 2, 3, 0, 5, 0))
       end
@@ -29,8 +29,8 @@ RSpec.describe Pomodoros::Values::Pomodoro do
   context '#contains_tag?' do
     it 'expects a string match on the tag to be true' do
       pomodoro = create(
-        :pv_pomodoro, activity_tags: [
-          create(:pv_activity_tag, :programming)
+        :pe_pomodoro, activity_tags: [
+          create(:pe_activity_tag, :programming)
         ]
       )
 

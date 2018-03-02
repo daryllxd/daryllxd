@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Namespace Pomodoro::Values  to `pv`.
+# Namespace Pomodoro::Entities  to `pv`.
 FactoryGirl.define do
-  factory :pv_activity_tag, class: Pomodoros::Values::ActivityTag do
+  factory :pe_activity_tag, class: Pomodoros::Entities::ActivityTag do
     initializes_as_value_object
 
     trait :programming do

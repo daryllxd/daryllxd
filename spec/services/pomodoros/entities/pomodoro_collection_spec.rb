@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe Pomodoros::Values::PomodoroCollection do
+RSpec.describe Pomodoros::Entities::PomodoroCollection do
   context '#duration' do
     context 'contains pomodoros' do
       it 'adds up the durations of all its constituent pomos' do
-        pomo1 = create(:pv_pomodoro, duration: 3)
-        pomo2 = create(:pv_pomodoro, duration: 9)
+        pomo1 = create(:pe_pomodoro, duration: 3)
+        pomo2 = create(:pe_pomodoro, duration: 9)
 
         pomo_collection = described_class.new(pomodoros: [pomo1, pomo2])
 
@@ -15,7 +15,7 @@ RSpec.describe Pomodoros::Values::PomodoroCollection do
 
     context 'empty' do
       it 'duration should equal 0' do
-        empty_pomo_collection = create(:pv_pomodoro_collection)
+        empty_pomo_collection = create(:pe_pomodoro_collection)
 
         expect(empty_pomo_collection.duration).to eq 0
       end
@@ -26,10 +26,10 @@ RSpec.describe Pomodoros::Values::PomodoroCollection do
     context 'happy path' do
       it 'should get durations of the tags that were passed in' do
         pomo_collection = create(
-          :pv_pomodoro_collection, pomodoros: [
-            create(:pv_pomodoro, :programming, duration: 20),
-            create(:pv_pomodoro, :programming, duration: 30),
-            create(:pv_pomodoro, :writing, duration: 40)
+          :pe_pomodoro_collection, pomodoros: [
+            create(:pe_pomodoro, :programming, duration: 20),
+            create(:pe_pomodoro, :programming, duration: 30),
+            create(:pe_pomodoro, :writing, duration: 40)
           ]
         )
 
@@ -42,7 +42,7 @@ RSpec.describe Pomodoros::Values::PomodoroCollection do
 
     context 'no pomodoros' do
       it 'works' do
-        pomo_collection = create(:pv_pomodoro_collection, pomodoros: [])
+        pomo_collection = create(:pe_pomodoro_collection, pomodoros: [])
 
         expect(pomo_collection.duration_for('Programming')).to eq(0)
         expect(pomo_collection.duration_for(nil)).to eq(0)

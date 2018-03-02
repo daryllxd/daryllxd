@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Pomodoros
-  module Values
+  module Entities
     class Pomodoro < Dry::Struct
       constructor_type :strict_with_defaults
 
@@ -10,7 +10,7 @@ module Pomodoros
       attribute :description, Types::Strict::String
       attribute :started_at, Types::Strict::Time
       # This should actually be a Set?
-      attribute :activity_tags, Types::Array(Pomodoros::Values::ActivityTag).default([])
+      attribute :activity_tags, Types::Array(Pomodoros::Entities::ActivityTag).default([])
 
       def ended_at
         started_at + duration.minutes
