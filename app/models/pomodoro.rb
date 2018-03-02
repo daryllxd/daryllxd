@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: pomodoros
@@ -17,6 +18,10 @@ class Pomodoro < ApplicationRecord
 
   has_many :pomodoro_activity_tags, dependent: :destroy
   has_many :activity_tags, through: :pomodoro_activity_tags
+
+  def create_activity_tag!(activity_tag)
+    pomodoro_activity_tags.create!(activity_tag: activity_tag)
+  end
 
   def ended_at
     started_at.localtime + duration.minutes
