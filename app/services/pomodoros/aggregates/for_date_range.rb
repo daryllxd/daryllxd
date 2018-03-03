@@ -20,7 +20,10 @@ module Pomodoros
       private
 
       def pomodoro_entities
-        pomodoros_from_repository.map do |p|
+        pomodoros_from_repository
+          .sort_by(&:started_at)
+          .reverse
+          .map do |p|
           Pomodoros::Entities::Pomodoro.new(
             id: p.id,
             duration: p.duration,
