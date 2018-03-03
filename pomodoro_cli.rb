@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'boot_cli'
 BootCli.new(presumed_symlink: '/usr/local/bin/p').boot
 
@@ -9,6 +10,7 @@ class PomodoroCli < Thor
   method_option :description, type: :string, aliases: '-d'
   method_option :duration, type: :string, aliases: '-u'
   method_option :tags, type: :string, aliases: '-t'
+  method_option :duration_offset, type: :string, aliases: '-o', default: 0
 
   def new
     new_pomodoros = Pomodoros::CreateInteractor.new(options.symbolize_keys).call
