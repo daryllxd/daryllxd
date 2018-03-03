@@ -1,15 +1,17 @@
 # frozen_string_literal: true
+
 module Pomodoros
   class CreateService < Pomodoros::BaseService
     extend Memoist
 
-    attr_reader :description, :duration, :tags, :errors
+    attr_reader :description, :duration, :tags, :errors, :duration_offset
 
     # tags: PomodoroActivityTag
-    def initialize(description:, duration:, tags:)
+    def initialize(description:, duration:, tags:, duration_offset: 0)
       @description = description
       @duration = duration.to_i
       @tags = tags
+      @duration_offset = duration_offset
     end
 
     def call
@@ -48,7 +50,7 @@ module Pomodoros
       {
         description: description,
         duration: duration,
-        started_at: DateTime.current - duration.minutes
+        started_at: Time.current - duration.minutes - duration_offset.minutes
       }
     end
 

@@ -1,9 +1,10 @@
 # frozen_string_literal: true
+
 require 'timecop'
 
 RSpec.describe Pomodoros::CreateService, type: :service do
   context 'happy path' do
-    Timecop.freeze(DateTime.new(2018, 2, 15, 5, 0, 0)) do
+    Timecop.freeze(Time.new(2018, 2, 15, 5, 0, 0)) do
       let!(:programming_activity_tag) { create(:activity_tag, :programming) }
       let!(:daryllxd_activity_tag) { create(:activity_tag, :daryllxd) }
 
@@ -24,7 +25,20 @@ RSpec.describe Pomodoros::CreateService, type: :service do
 
       it 'sets the started_at to be whatever the duration was before it was logged' do
         expect(created_pomodoro.started_at.to_s(:db)).to eq(
-          (created_pomodoro.created_at - created_pomodoro.duration.minutes).to_s(:db)
+          (created_pomodoro.created_at - 25.minutes).to_s(:db)
+        )
+      end
+
+      it 'applies an offset to the duration' do
+        created_pomodoro = execute.call(
+          duration: 25,
+          description: 'Did things',
+          tags: [programming_activity_tag, daryllxd_activity_tag],
+          duration_offset: 50
+        )
+
+        expect(created_pomodoro.started_at.to_s(:db)).to eq(
+          (created_pomodoro.created_at - 75.minutes).to_s(:db)
         )
       end
     end
