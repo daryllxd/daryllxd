@@ -3,7 +3,7 @@
 module Api
   module V1
     class PomodorosController < ApiController
-      before_action :authenticate_user!
+      before_action :doorkeeper_authorize!
 
       def index
         pomodoros = Pomodoros::Aggregates::ForDateRange.new.pomodoro_collection

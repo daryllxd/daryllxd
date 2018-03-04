@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  use_doorkeeper do
+    skip_controllers :authorizations, :applications, :authorized_applications
+  end
+
+  # devise_for :users
   post 'graphql' => 'graphqls#create'
 
   scope(

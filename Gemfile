@@ -20,6 +20,7 @@ gem 'whenever', '0.9.7', require: false
 
 # Authentication
 gem 'devise', '4.4.1'
+gem 'doorkeeper', '4.3.1'
 
 # Ruby-related
 gem 'dry-struct'
