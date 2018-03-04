@@ -3,6 +3,8 @@
 module Api
   module V1
     class PomodorosController < ApiController
+      before_action :authenticate_user!
+
       def index
         pomodoros = Pomodoros::Aggregates::ForDateRange.new.pomodoro_collection
 

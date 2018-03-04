@@ -2,17 +2,12 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 
-# Rails default gems
+# Rails/web related
 gem 'rails', '5.0.2'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
 gem 'bootsnap'
 gem 'dotenv', require: false
-gem 'dry-struct'
-gem 'graphql', '~> 1.0.0'
-gem 'graphiql-rails'
-gem 'memoist'
 gem 'pg', '0.19.0'
-gem 'powerpack'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rake', '11.3.0'
 gem 'slim-rails'
@@ -22,6 +17,18 @@ gem 'thin'
 gem 'thor', '0.19.4'
 gem 'watir', '6.3.0', require: false
 gem 'whenever', '0.9.7', require: false
+
+# Authentication
+gem 'devise', '4.4.1'
+
+# Ruby-related
+gem 'dry-struct'
+gem 'memoist'
+gem 'powerpack'
+
+# Testing out
+gem 'graphql', '~> 1.0.0'
+gem 'graphiql-rails'
 
 group :development, :test do
   gem 'bullet', '5.5.1'
