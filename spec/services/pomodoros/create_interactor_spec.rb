@@ -1,11 +1,28 @@
 # frozen_string_literal: true
+
 RSpec.describe Pomodoros::CreateInteractor, type: :service do
   context 'happy path' do
     it 'works if tags are resolved and pomodoros are created' do
-      allow(Pomodoros::TagResolver).to receive(:call).and_return(true)
+      allow(Pomodoros::TagResolver).to receive(:call).and_return('mock_found_tags')
       allow(Pomodoros::CreateService).to receive(:call).and_return(create(:successful_operation))
 
-      result = execute.call(tags: 'swag')
+      expect(Pomodoros::TagResolver).to receive(:call).with(
+        tag_string: 'swag'
+      )
+
+      expect(Pomodoros::CreateService).to receive(:call).with(
+        description: 'hello',
+        duration: 5,
+        duration_offset: 3,
+        tags: 'mock_found_tags'
+      )
+
+      result = execute.call(
+        description: 'hello',
+        duration: '5',
+        duration_offset: '3',
+        tags: 'swag'
+      )
 
       expect(result).to be_valid
     end

@@ -1,12 +1,14 @@
 # frozen_string_literal: true
+
 module Pomodoros
   class CreateInteractor
-    attr_reader :tags, :description, :duration
+    attr_reader :tags, :description, :duration, :duration_offset
 
     def initialize(options)
       @tags = options.fetch(:tags) { [] }
       @description = options.fetch(:description) { nil }
       @duration = options.fetch(:duration) { nil }
+      @duration_offset = options.fetch(:duration_offset) { 0 }
     end
 
     def call
@@ -32,7 +34,8 @@ module Pomodoros
         begin
           Pomodoros::CreateService.call(
             description: description,
-            duration: duration,
+            duration: duration.to_i,
+            duration_offset: duration_offset.to_i,
             tags: found_tags
           )
         end

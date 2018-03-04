@@ -9,7 +9,7 @@ module Pomodoros
     # tags: PomodoroActivityTag
     def initialize(description:, duration:, tags:, duration_offset: 0)
       @description = description
-      @duration = duration.to_i
+      @duration = duration
       @tags = tags
       @duration_offset = duration_offset
     end
