@@ -1,7 +1,6 @@
 # frozen_string_literal: true
-class ApiController < ApplicationController
-  before_action :ensure_access_token_is_valid
 
+class ApiController < ApplicationController
   def current_user
     # For development/productivity purposes, you can authenticate yourself by just passing params[:user_id].
     @cached_current_user ||= find_current_user
