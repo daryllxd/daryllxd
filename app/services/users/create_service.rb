@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Users
-  class CreateService
+  class CreateService < BaseService
     attr_reader :email, :password
 
     def initialize(**new_user_attributes)
