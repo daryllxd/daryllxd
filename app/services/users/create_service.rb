@@ -5,8 +5,8 @@ module Users
     attr_reader :email, :password
 
     def initialize(**new_user_attributes)
-      @email = new_user_attributes.fetch(:email)
-      @password = new_user_attributes.fetch(:password)
+      @email = new_user_attributes.fetch(:email, nil)
+      @password = new_user_attributes.fetch(:password, nil)
     end
 
     def call
