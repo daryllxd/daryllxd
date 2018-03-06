@@ -12,12 +12,12 @@ module Pomodoros
     end
 
     def call
-      return DaryllxdError.new(I18n.t('pomodoro.create.error_no_tags')) unless found_tags.present?
+      return DaryllxdError.new(message: I18n.t('pomodoro.create.error_no_tags')) unless found_tags.present?
 
       if created_pomodoro.valid?
         created_pomodoro
       else
-        DaryllxdError.new(I18n.t('pomodoro.create.error_on_pomodoro'))
+        DaryllxdError.new(message: I18n.t('pomodoro.create.error_on_pomodoro'))
       end
     end
 

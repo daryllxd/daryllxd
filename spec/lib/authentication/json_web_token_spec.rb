@@ -9,6 +9,8 @@ RSpec.describe Authentication::JsonWebToken do
         decoded_token = described_class.decode(new_json_token)
 
         expect(decoded_token).to be_valid
+
+        # Expect indifferent hash
         expect(decoded_token.payload[:user_id]).to eq(1)
         expect(decoded_token.payload['user_id']).to eq(1)
       end
@@ -21,7 +23,7 @@ RSpec.describe Authentication::JsonWebToken do
         decoded_token = described_class.decode(new_json_token + 'a')
 
         expect(decoded_token).not_to be_valid
-        expect(decoded_token.to_s).to eq('Incorrect JSON Web token.')
+        expect(decoded_token.message).to eq('Incorrect JSON Web token.')
       end
     end
   end

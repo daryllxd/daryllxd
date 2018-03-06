@@ -30,7 +30,7 @@ module Pomodoros
 
       return errors
     rescue StandardError => e
-      DaryllxdError.new(e)
+      DaryllxdError.new(message: e.to_s)
     end
 
     def steps

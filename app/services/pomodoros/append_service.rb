@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Pomodoros
   class AppendService
     attr_reader :duration
@@ -12,7 +13,7 @@ module Pomodoros
         last_pomodoro = Pomodoro.last
         last_pomodoro.update_attributes(duration: last_pomodoro.duration + duration.to_i)
       else
-        Pomodoros::Errors::GenericError.new('Unable to update duration.')
+        Pomodoros::Errors::GenericError.new(message: 'Unable to update duration.')
       end
     end
 

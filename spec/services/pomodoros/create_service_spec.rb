@@ -55,7 +55,7 @@ RSpec.describe Pomodoros::CreateService, type: :service do
 
         expect(Pomodoro.count).to eq 0
         expect(created_pomodoro).not_to be_valid
-        expect(created_pomodoro.to_s).to include('Validation failed')
+        expect(created_pomodoro.message).to include('Validation failed')
       end
     end
 

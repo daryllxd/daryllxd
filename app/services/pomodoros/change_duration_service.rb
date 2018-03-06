@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Pomodoros
   class ChangeDurationService
     attr_reader :pomodoro, :duration, :absolute
@@ -18,7 +19,7 @@ module Pomodoros
 
       pomodoro
     rescue TypeError, ActiveRecord::RecordInvalid => e
-      Pomodoros::Errors::GenericError.new(e)
+      Pomodoros::Errors::GenericError.new(message: e.message)
     end
   end
 end

@@ -13,7 +13,7 @@ module Authentication
         )
       )
     rescue JWT::VerificationError
-      DaryllxdError.new('Incorrect JSON Web token.')
+      DaryllxdError.new(message: 'Incorrect JSON Web token.')
     end
   end
 end

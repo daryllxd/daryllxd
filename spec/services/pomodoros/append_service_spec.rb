@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe Pomodoros::AppendService, type: :service do
   let!(:created_pomodoro) do
     create(:pomodoro, duration: 25)

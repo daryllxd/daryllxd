@@ -36,7 +36,7 @@ RSpec.describe Pomodoros::CreateInteractor, type: :service do
         result = execute.call(tags: '')
 
         expect(result).not_to be_valid
-        expect(result.to_s).to eq 'Cannot create, no tags'
+        expect(result.message).to eq 'Cannot create, no tags'
       end
     end
 
@@ -48,7 +48,7 @@ RSpec.describe Pomodoros::CreateInteractor, type: :service do
         failure_in_create_service = execute.call(tags: 'pants')
 
         expect(failure_in_create_service).not_to be_valid
-        expect(failure_in_create_service.to_s).to eq 'Cannot create, invalid pomodoro'
+        expect(failure_in_create_service.message).to eq 'Cannot create, invalid pomodoro'
       end
     end
   end
