@@ -24,12 +24,12 @@ gem 'doorkeeper', '4.3.1'
 gem 'jwt', '2.1.0'
 
 # Ruby-related
-gem 'dry-struct'
-gem 'memoist'
+gem 'dry-struct', '0.4.0'
+gem 'memoist', '0.16.0'
 gem 'powerpack'
 
 # Testing out
-gem 'graphql', '~> 1.0.0'
+gem 'graphql', '1.7.13'
 gem 'graphiql-rails'
 
 group :development, :test do
