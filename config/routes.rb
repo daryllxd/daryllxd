@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     module: 'api/v1', path: 'api/v1/',
     constraints: EnsureCorrectApiVersion.new(version: 1)
   ) do
+    resources :registrations, only: :create
+
     resources :pomodoros, only: :index
   end
 end

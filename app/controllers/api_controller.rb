@@ -1,25 +1,18 @@
 # frozen_string_literal: true
 
 class ApiController < ApplicationController
-  def current_user
-    # For development/productivity purposes, you can authenticate yourself by just passing params[:user_id].
-    @cached_current_user ||= find_current_user
+  # Payload must be a hash.
+  def render_token_with(user:, payload:)
+    jwt = Authentication::JsonWebToken.encode(
+      user_email: user.email
+    )
+
+    render_success(payload: payload.merge(token: jwt))
   end
 
-  def find_current_user
-    if Rails.env.development?
-      User.find_by_id(params[:user_id])
-    else
-      AccessToken.compare_tokens(request_details).user
-    end
-  end
-
-  def ensure_params_are_present(param_sym, param_finder = params)
-    raise(Errors::MissingParams, "`#{param_sym}`") unless param_finder[param_sym]
-  end
-
-  def render_success(status: 200)
-    render json: { success: true }, status: status
+  # Payload must be a hash.
+  def render_success(payload: nil, status: infer_status_from_action)
+    render json: SuccessHash.new(payload: payload).render, status: status
   end
 
   def render_error_if_params_are_not_present(param)
@@ -28,7 +21,7 @@ class ApiController < ApplicationController
 
   def render_error(message: 'Error', payload: {}, status: 401)
     payload ||= {}
-    render json: { error: message }.merge(payload), status: status
+    render json: { sucesss: false }.merge(data: { message: message, payload: payload }), status: status
   end
 
   def render_error_from(daryllxd_error)
@@ -41,7 +34,13 @@ class ApiController < ApplicationController
     render_error(error_hash)
   end
 
-  def render_errors_for(active_record_object)
-    render json: { errors: active_record_object.errors.full_messages }, status: 422
+  private
+
+  def infer_status_from_action
+    if params[:action] == 'create'
+      201
+    else
+      200
+    end
   end
 end

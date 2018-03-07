@@ -11,4 +11,9 @@ class DaryllxdError < StandardError
   def valid?
     false
   end
+
+  # TODO: Refactor into a better implementation
+  def http_error_code
+    401
+  end
 end
