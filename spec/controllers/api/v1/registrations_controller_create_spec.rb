@@ -38,10 +38,9 @@ RSpec.describe Api::V1::RegistrationsController, type: :controller do
 
         post :create, params: { user: new_user_params }
 
-        expect(response.status).to eq 401
-        expect(json_response).to eq 401
-        expect(json_response_data['user']).to be_present
-        expect(json_response_data['token']).to be_present
+        expect(response.status).to eq 400
+        expect(json_response_data['message']).to be_present
+        expect(json_response_data['payload']).to be_present
       end
     end
   end

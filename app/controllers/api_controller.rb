@@ -15,13 +15,9 @@ class ApiController < ApplicationController
     render json: SuccessHash.new(payload: payload).render, status: status
   end
 
-  def render_error_if_params_are_not_present(param)
-    render json: { error: param }, status: 422
-  end
-
-  def render_error(message: 'Error', payload: {}, status: 401)
-    payload ||= {}
-    render json: { sucesss: false }.merge(data: { message: message, payload: payload }), status: status
+  # Renedering errors
+  def render_error(message: 'Error', payload: nil, status: 400)
+    render json: ErrorResponse.new(message: message, payload: payload).render, status: status
   end
 
   def render_error_from(daryllxd_error)

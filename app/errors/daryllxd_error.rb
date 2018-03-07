@@ -14,6 +14,6 @@ class DaryllxdError < StandardError
 
   # TODO: Refactor into a better implementation
   def http_error_code
-    401
+    400
   end
 end
