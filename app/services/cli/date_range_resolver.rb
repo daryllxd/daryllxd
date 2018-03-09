@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Cli
   class DateRangeResolver
     attr_reader :date_range_string

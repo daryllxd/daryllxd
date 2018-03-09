@@ -9,6 +9,7 @@ module Types
 end
 
 require 'app/services/cli/date_range_resolver'
+require 'app/services/cli/view_type_resolver'
 require 'app/models/date_range_factory'
 require 'app/models/constants'
 require 'app/models/pomodoro'
@@ -29,5 +30,6 @@ require 'app/services/pomodoros/entities/pomodoro_collection'
 require 'app/services/pomodoros/aggregates/for_date_range'
 require 'app/services/pomodoros/errors/generic_error'
 require 'app/services/pomodoros/presenters/activity_tags'
+require 'app/services/pomodoros/presenters/activity_tag_breakdown'
 require 'app/services/pomodoros/presenters/for_date_range'
 require 'app/services/pomodoros/presenters/terminal_table'

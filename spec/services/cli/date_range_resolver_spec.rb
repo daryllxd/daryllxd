@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe Cli::DateRangeResolver, type: :service do
   context 'happy path' do
     context 'yesterday' do
