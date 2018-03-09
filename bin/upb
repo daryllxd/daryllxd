@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git add daryllxd-db-backup
+git commit -m "Up backup."
+git push
