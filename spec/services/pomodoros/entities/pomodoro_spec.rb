@@ -16,6 +16,24 @@ RSpec.describe Pomodoros::Entities::Pomodoro do
     end
   end
 
+  context '#shortened_description' do
+    context 'above the character limit ' do
+      it 'shortens the description' do
+        new_pomo = create(:pe_pomodoro, description: 'abcdefghijklmnopqrstuvwxyz123')
+
+        expect(new_pomo.shortened_description).to eq 'abcdefghijklmnopqrstuvwxyz12…'
+      end
+    end
+
+    context 'below the character limit' do
+      it 'returns the normal description' do
+        new_pomo = create(:pe_pomodoro, description: '')
+
+        expect(new_pomo.shortened_description).to eq ''
+      end
+    end
+  end
+
   context '#ended_at' do
     it 'adds the duration' do
       Timecop.freeze(Time.local(2015, 2, 3, 0, 0, 0)) do

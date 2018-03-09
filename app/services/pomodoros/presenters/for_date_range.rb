@@ -37,7 +37,7 @@ module Pomodoros
       def presented_pomodoros
         pomodoros.map do |pomodoro|
           [
-            pomodoro.description, pomodoro.duration, sorted_tags_for(pomodoro),
+            pomodoro.shortened_description, pomodoro.duration, sorted_tags_for(pomodoro),
             pomodoro.started_at.localtime.strftime('%R'), pomodoro.ended_at.strftime('%R')
           ]
         end

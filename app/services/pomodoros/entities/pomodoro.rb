@@ -12,6 +12,16 @@ module Pomodoros
       # This should actually be a Set?
       attribute :activity_tags, Types::Array(Pomodoros::Entities::ActivityTag).default([])
 
+      SHORTENED_DESCRIPTION_CHARACTER_LIMIT = 28
+
+      def shortened_description
+        if description.length > SHORTENED_DESCRIPTION_CHARACTER_LIMIT
+          description.first(SHORTENED_DESCRIPTION_CHARACTER_LIMIT) + '…'
+        else
+          description
+        end
+      end
+
       def ended_at
         started_at + duration.minutes
       end
