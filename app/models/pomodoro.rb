@@ -22,8 +22,4 @@ class Pomodoro < ApplicationRecord
   def create_activity_tag!(activity_tag)
     pomodoro_activity_tags.create!(activity_tag: activity_tag)
   end
-
-  def ended_at
-    started_at.localtime + duration.minutes
-  end
 end
