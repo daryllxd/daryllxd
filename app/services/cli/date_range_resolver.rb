@@ -9,12 +9,18 @@ module Cli
     end
 
     def call
-      case date_range_string
-      when 'y' then DateRangeFactory.yesterday
-      when 'w' then DateRangeFactory.for_this_week
-      when 'lw' then DateRangeFactory.for_last_week
-      else DateRangeFactory.today
-      end
+      mapping_hash[date_range_string] || DateRangeFactory.today
+    end
+
+    def mapping_hash
+      {
+        'y' => DateRangeFactory.yesterday,
+        'w' => DateRangeFactory.for_this_week,
+        'lw' => DateRangeFactory.for_last_week,
+        'm' => DateRangeFactory.for_this_month,
+        'lm' => DateRangeFactory.for_last_month,
+        'a' => DateRangeFactory.all_time
+      }
     end
   end
 end
