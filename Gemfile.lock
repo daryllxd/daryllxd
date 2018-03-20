@@ -61,13 +61,13 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootsnap (1.1.1)
+    bootsnap (1.2.0)
       msgpack (~> 1.0)
     builder (3.2.3)
     bullet (5.5.1)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
-    byebug (9.0.6)
+    byebug (10.0.0)
     capistrano (3.6.1)
       airbrussh (>= 1.0.0)
       capistrano-harrow
@@ -96,7 +96,7 @@ GEM
     clipboard (1.1.1)
     codeclimate-test-reporter (1.0.5)
       simplecov
-    coderay (1.1.1)
+    coderay (1.1.2)
     concurrent-ruby (1.0.5)
     contracts (0.16.0)
     crass (1.0.3)
@@ -213,11 +213,11 @@ GEM
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     memoist (0.16.0)
-    method_source (0.8.2)
+    method_source (0.9.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    msgpack (1.1.0)
+    msgpack (1.2.4)
     multi_json (1.12.1)
     multi_test (0.1.2)
     nenv (0.3.0)
@@ -236,12 +236,11 @@ GEM
       ast (~> 2.4.0)
     pg (0.19.0)
     powerpack (0.1.1)
-    pry (0.10.4)
+    pry (0.11.3)
       coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    pry-byebug (3.4.2)
-      byebug (~> 9.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
       pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
@@ -328,8 +327,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    slop (3.6.0)
-    spring (2.0.1)
+    spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -385,7 +383,7 @@ DEPENDENCIES
   annotate (~> 2.7, >= 2.7.1)
   aruba (= 0.14.2)
   better_errors
-  bootsnap
+  bootsnap (~> 1.2.0)
   bullet (= 5.5.1)
   capistrano (~> 3.6.1)
   capistrano-bundler
@@ -414,7 +412,7 @@ DEPENDENCIES
   memoist (= 0.16.0)
   pg (= 0.19.0)
   powerpack
-  pry-byebug (= 3.4.2)
+  pry-byebug (= 3.6.0)
   pry-rails
   rack-cors
   rails (~> 5.1.5)
@@ -428,7 +426,7 @@ DEPENDENCIES
   ruby-prof (>= 0.16.0)
   shoulda-matchers (~> 3.1)
   simplecov
-  spring
+  spring (~> 2.0.2)
   spring-commands-rspec
   stackprof (>= 0.2.9)
   terminal-table

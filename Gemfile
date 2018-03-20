@@ -5,7 +5,7 @@ ruby '2.4.1'
 # Rails/web related
 gem 'rails', '~> 5.1.5'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
-gem 'bootsnap'
+gem 'bootsnap', '~> 1.2.0'
 gem 'dotenv', require: false
 gem 'pg', '0.19.0'
 gem 'rack-cors', require: 'rack/cors'
@@ -40,9 +40,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rb-readline'
   gem 'ruby-prof', '>= 0.16.0', require: false
-  gem 'pry-byebug', '3.4.2'
+  gem 'pry-byebug', '3.6.0'
   gem 'pry-rails'
-  gem 'spring'
+  gem 'spring', '~> 2.0.2'
 end
 
 group :development do
