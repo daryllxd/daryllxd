@@ -37,6 +37,7 @@ module Pomodoros
       def categories
         [
           'Programming',
+          'Charisma',
           'Writing',
           'Self-Improvement',
           'Vlog/Travel',
