@@ -69,6 +69,7 @@ group :test do
   gem 'fuubar', '2.2.0'
   gem 'json_spec', '1.1.4'
   gem 'launchy'
+  gem 'rspec_junit_formatter'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
   gem 'stackprof', '>= 0.2.9', require: false
