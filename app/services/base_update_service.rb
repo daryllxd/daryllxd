@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module BaseUpdateService
   def build_edit_attributes_hash(
     editable_attributes:, supplied_attributes:
