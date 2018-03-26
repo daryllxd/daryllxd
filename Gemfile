@@ -10,6 +10,8 @@ gem 'dotenv', require: false
 gem 'pg', '0.19.0'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rake', '11.3.0'
+gem 'redis', '~> 4.0.1'
+gem 'redis-namespace', '~> 1.6.0'
 gem 'terminal-table'
 gem 'thin'
 gem 'thor', '0.19.4'
