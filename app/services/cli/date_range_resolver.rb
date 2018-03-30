@@ -19,6 +19,7 @@ module Cli
         'lw' => DateRangeFactory.for_last_week,
         'm' => DateRangeFactory.for_this_month,
         'lm' => DateRangeFactory.for_last_month,
+        'ye' => DateRangeFactory.for_this_year,
         'a' => DateRangeFactory.all_time
       }
     end

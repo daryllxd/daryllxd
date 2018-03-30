@@ -43,6 +43,13 @@ class DateRangeFactory
     )
   end
 
+  def self.for_this_year
+    DateRange.new(
+      start_date: Date.current.beginning_of_year,
+      end_date: Date.current
+    )
+  end
+
   def self.all_time
     DateRange.new(
       start_date: (Date.current - 10.years).beginning_of_week,
