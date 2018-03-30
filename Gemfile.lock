@@ -97,6 +97,7 @@ GEM
     codeclimate-test-reporter (1.0.5)
       simplecov
     coderay (1.1.2)
+    colorize (0.8.1)
     concurrent-ruby (1.0.5)
     contracts (0.16.0)
     crass (1.0.3)
@@ -398,6 +399,7 @@ DEPENDENCIES
   capistrano-thin (~> 1.2.0)
   clipboard
   codeclimate-test-reporter
+  colorize
   database_cleaner (~> 1.6.2)
   db-query-matchers
   devise (= 4.4.1)

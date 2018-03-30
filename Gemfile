@@ -66,6 +66,7 @@ end
 
 group :test do
   gem 'aruba', '0.14.2'
+  gem 'colorize'
   gem 'database_cleaner', '~> 1.6.2'
   gem 'db-query-matchers'
   gem 'fuubar', '2.2.0'
