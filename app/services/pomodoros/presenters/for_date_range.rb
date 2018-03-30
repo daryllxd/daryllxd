@@ -44,7 +44,11 @@ module Pomodoros
       end
 
       def total_time_for_today
-        ['Total time for today:', pomodoros.duration, "Programming: #{pomodoros.duration_for('Programming')}", '', '']
+        [
+          'Total time for today:',
+          pomodoros.duration_for,
+          "Programming: #{pomodoros.duration_for('Programming')}", '', ''
+        ]
       end
 
       def sorted_tags_for(pomodoro)

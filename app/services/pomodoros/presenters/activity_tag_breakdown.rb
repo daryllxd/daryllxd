@@ -39,6 +39,8 @@ module Pomodoros
           'Programming',
           'Charisma',
           'Writing',
+          'Job Hunt',
+          'Business',
           'Self-Improvement',
           'Vlog/Travel',
           'Cooking',
@@ -55,7 +57,7 @@ module Pomodoros
       end
 
       def total_time_for_date_range
-        ['Total time:', pomodoros.duration, '']
+        ['Total time:', pomodoros.duration_for, pomodoros.duration_in_hours]
       end
     end
 

@@ -7,13 +7,21 @@ module Pomodoros
 
       attribute :pomodoros, Types::Strict::Array.of(Pomodoros::Entities::Pomodoro)
 
-      def duration
-        sum(&:duration)
+      # If tag is passed, get duration for that tag. If not, get duration for everything
+      def duration_for(tag_name = nil)
+        block = if tag_name
+                  proc { select { |p| p.contains_tag?(tag_name) } }
+                else
+                  proc { self }
+                end
+
+        block
+          .call
+          .sum(&:duration)
       end
 
-      def duration_for(tag_name)
-        select { |p| p.contains_tag?(tag_name) }
-          .sum(&:duration)
+      def duration_in_hours(tag_name = nil)
+        (duration_for(tag_name) / 60.0).round(2)
       end
 
       # Enumerable implementation: interate over pomos
