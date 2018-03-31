@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Cache::Orchestrator do
+  let!(:cache) { described_class.new }
   after(:each) do
     test_env = Redis.current
 
@@ -11,8 +12,6 @@ RSpec.describe Cache::Orchestrator do
 
   context 'set and get' do
     it 'sets a Redis string' do
-      cache = described_class.new
-
       cache.set('cache', 'hoho')
 
       expect(cache.get('cache')).to eq('hoho')
@@ -20,10 +19,22 @@ RSpec.describe Cache::Orchestrator do
     end
   end
 
+  # rubocop:disable Style/BracesAroundHashParameters
+  context '#setl and getl' do
+    it 'sets and gets Redis lists. Hash symbol keys get converted to strings' do
+      cache.setl('cache', 'hoho', 'haha', { 'hello' => 'world', swag: { is: 'cool' } })
+
+      expect(cache.getl('cache')).to eq(
+        ['hoho', 'haha', {
+          'hello' => 'world', 'swag' => { 'is' => 'cool' }
+        }]
+      )
+    end
+  end
+  # rubocop:enable Style/BracesAroundHashParameters
+
   context 'setting hashes' do
     it 'sets a Redis hash and is Namespaced' do
-      cache = described_class.new
-
       cache.set_hash('cache', hoho: 'hehe')
 
       expect(Redis.current.hgetall('test:cache')).to eq('hoho' => 'hehe')
