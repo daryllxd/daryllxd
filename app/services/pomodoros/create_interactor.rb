@@ -2,6 +2,8 @@
 
 module Pomodoros
   class CreateInteractor
+    extend Memoist
+
     attr_reader :tags, :description, :duration, :duration_offset
 
     def initialize(options)
@@ -30,15 +32,14 @@ module Pomodoros
     end
 
     def created_pomodoro
-      @memoized_created_pomodoro ||=
-        begin
-          Pomodoros::CreateService.call(
-            description: description,
-            duration: duration.to_i,
-            duration_offset: duration_offset.to_i,
-            tags: found_tags
-          )
-        end
+      Pomodoros::CreateService.call(
+        description: description,
+        duration: duration.to_i,
+        duration_offset: duration_offset.to_i,
+        tags: found_tags
+      )
     end
+
+    memoize :created_pomodoro
   end
 end
