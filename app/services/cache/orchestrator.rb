@@ -26,7 +26,6 @@ module Cache
 
     def getl(key, first = 0, last = -1)
       namespaced_redis.lrange(key, first, last).map { |val| JSON.parse(val) }
-      a
     end
 
     def set_hash(*args)
