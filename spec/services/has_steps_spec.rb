@@ -48,6 +48,18 @@ class NoSuccessReturnValue
   end
 end
 
+class RaisesActiveRecordError
+  include HasSteps
+
+  def steps
+    [proc { raise_error }]
+  end
+
+  def raise_error
+    raise ActiveRecord::RecordInvalid
+  end
+end
+
 RSpec.describe HasSteps do
   context 'missing methods' do
     it 'missing `steps` method: raises an error saying there are no steps' do
@@ -58,10 +70,19 @@ RSpec.describe HasSteps do
     end
 
     it 'missing `success_return_value` method: raises an error saying there are no steps' do
-      result = NoSuccessReturnValue.new
+      service = NoSuccessReturnValue.new
 
-      expect { result.call }.to raise_error(NotImplementedError)
-      expect { result.call }.to raise_error(/Method `success_return_value` is not implemented./)
+      expect { service.call }.to raise_error(NotImplementedError)
+      expect { service.call }.to raise_error(/Method `success_return_value` is not implemented./)
+    end
+  end
+
+  context 'something wrong with ActiveRecord' do
+    it 'creates a Daryllxd error, which we cantrol and can trace' do
+      allow_any_instance_of(ActiveRecord::RecordInvalid).to receive(:message)
+      service = RaisesActiveRecordError.new
+
+      expect(service.call).to be_a_kind_of(DaryllxdError)
     end
   end
 end

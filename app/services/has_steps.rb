@@ -20,7 +20,7 @@ module HasSteps
     return errors
   rescue NotImplementedError => e
     raise e
-  rescue StandardError => e
+  rescue ActiveRecord::ActiveRecordError => e
     DaryllxdError.new(message: e.to_s)
   end
 
