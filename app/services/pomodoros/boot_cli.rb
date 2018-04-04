@@ -8,6 +8,7 @@ module Types
   include Dry::Types.module
 end
 
+require 'app/services/has_steps'
 require 'app/services/cli/date_range_resolver'
 require 'app/services/cli/view_type_resolver'
 require 'app/models/date_range_factory'

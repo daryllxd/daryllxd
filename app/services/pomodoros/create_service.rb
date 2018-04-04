@@ -2,6 +2,7 @@
 
 module Pomodoros
   class CreateService < Pomodoros::BaseService
+    include HasSteps
     extend Memoist
 
     attr_reader :description, :duration, :tags, :errors, :duration_offset
@@ -14,30 +15,15 @@ module Pomodoros
       @duration_offset = duration_offset
     end
 
-    def call
-      ActiveRecord::Base.transaction do
-        steps.map do |step|
-          result = step.call
-
-          unless result.valid?
-            @errors = result.errors
-            raise ActiveRecord::Rollback
-          end
-        end
-
-        return create_pomodoro!
-      end
-
-      return errors
-    rescue StandardError => e
-      DaryllxdError.new(message: e.to_s)
-    end
-
     def steps
       [
         proc { create_pomodoro! },
         proc { create_tags! }
       ]
+    end
+
+    def success_return_value
+      create_pomodoro!
     end
 
     private
