@@ -20,7 +20,9 @@ module HasSteps
     return errors
   rescue NotImplementedError => e
     raise e
-  rescue ActiveRecord::ActiveRecordError => e
+    # Catch both ActiveRecord::Error (error returned with create!)
+    # and ActiveModel::Errors (error returned with update_attributes!)
+  rescue ActiveRecord::ActiveRecordError, ActiveModel::Errors => e
     DaryllxdError.new(message: e.to_s)
   end
 
