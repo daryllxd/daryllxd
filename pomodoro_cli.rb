@@ -7,9 +7,9 @@ require 'app/services/pomodoros/boot_cli'
 
 class PomodoroCli < Thor
   desc 'new', 'Makes a new pomodoro'
-  method_option :description, type: :string, aliases: '-d'
-  method_option :duration, type: :string, aliases: '-u'
-  method_option :tags, type: :string, aliases: '-t'
+  method_option :description, type: :string, aliases: '-d', default: ''
+  method_option :duration, type: :string, aliases: '-u', default: 0
+  method_option :tags, type: :string, aliases: '-t', default: ''
   method_option :duration_offset, type: :string, aliases: '-o', default: 0
 
   def new
