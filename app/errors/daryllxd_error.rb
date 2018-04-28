@@ -3,6 +3,8 @@
 class DaryllxdError < StandardError
   attr_reader :message, :payload
 
+  alias to_s message
+
   def initialize(message: 'Error.', payload: nil)
     @message = message
     @payload = payload
@@ -12,7 +14,7 @@ class DaryllxdError < StandardError
     false
   end
 
-  # TODO: Refactor into a better implementation
+  # TODO: Refactor to a better implementation
   def http_error_code
     400
   end
