@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe Pomodoros::TagResolver, type: :service do
   context 'happy path' do
     let!(:programming_activity_tag) { create(:activity_tag, :programming) }
@@ -12,9 +13,15 @@ RSpec.describe Pomodoros::TagResolver, type: :service do
         [programming_activity_tag, daryllxd_activity_tag]
       )
 
+      expect(resolved_tags).to be_valid
+
       expect(resolved_tags_reverse).to match_array(
         [programming_activity_tag, daryllxd_activity_tag]
       )
+    end
+
+    it 'performance: 1 query only' do
+      expect { execute.call(tag_string: 'pd') }.to make_database_queries(count: 1)
     end
   end
 
@@ -35,7 +42,7 @@ RSpec.describe Pomodoros::TagResolver, type: :service do
       it 'returns an empty array' do
         unresolved_tags = execute.call(tag_string: 'abc')
 
-        expect(unresolved_tags).to be_empty
+        expect(unresolved_tags).not_to be_valid
       end
     end
 
@@ -43,7 +50,7 @@ RSpec.describe Pomodoros::TagResolver, type: :service do
       it 'returns an empty array' do
         unresolved_tags = execute.call(tag_string: nil)
 
-        expect(unresolved_tags).to be_empty
+        expect(unresolved_tags).not_to be_valid
       end
     end
   end

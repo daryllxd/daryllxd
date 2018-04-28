@@ -14,7 +14,7 @@ module Pomodoros
     end
 
     def call
-      return DaryllxdError.new(message: I18n.t('pomodoro.create.error_no_tags')) unless found_tags.present?
+      return found_tags unless found_tags.valid?
 
       if created_pomodoro.valid?
         created_pomodoro

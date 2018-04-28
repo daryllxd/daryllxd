@@ -24,4 +24,5 @@ en:
   pomodoro:
     create:
       error_no_tags: "Cannot create, no tags"
+      error_no_tags_found: "Unable to find tags with that tag string."
       error_on_pomodoro: "Cannot create, invalid pomodoro"
