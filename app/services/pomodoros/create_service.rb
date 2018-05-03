@@ -12,7 +12,7 @@ module Pomodoros
       @description = description
       @duration = duration
       @tags = tags
-      @duration_offset = duration_offset
+      @duration_offset = duration_offset || 0
     end
 
     def steps
