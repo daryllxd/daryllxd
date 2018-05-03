@@ -2,7 +2,7 @@
 
 require 'timecop'
 
-RSpec.describe Pomodoros::CreateService, type: :service do
+RSpec.describe Pomodoros::Create, type: :service do
   context 'happy path' do
     Timecop.freeze(Time.new(2018, 2, 15, 5, 0, 0)) do
       let!(:programming_activity_tag) { create(:activity_tag, :programming) }

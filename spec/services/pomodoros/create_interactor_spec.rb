@@ -5,13 +5,13 @@ RSpec.describe Pomodoros::CreateInteractor, type: :service do
     it 'works if tags are resolved and pomodoros are created' do
       mock_found_tags = create(:successful_operation)
       allow(Pomodoros::TagResolver).to receive(:call).and_return(mock_found_tags)
-      allow(Pomodoros::CreateService).to receive(:call).and_return(create(:successful_operation))
+      allow(Pomodoros::Create).to receive(:call).and_return(create(:successful_operation))
 
       expect(Pomodoros::TagResolver).to receive(:call).with(
         tag_string: 'swag'
       )
 
-      expect(Pomodoros::CreateService).to receive(:call).with(
+      expect(Pomodoros::Create).to receive(:call).with(
         description: 'hello',
         duration: 5,
         duration_offset: 3,
@@ -47,7 +47,7 @@ RSpec.describe Pomodoros::CreateInteractor, type: :service do
     context 'error in CreateService' do
       it 'results in an error' do
         allow(Pomodoros::TagResolver).to receive(:call).and_return(create(:successful_operation))
-        allow(Pomodoros::CreateService).to receive(:call).and_return(create(:daryllxd_error))
+        allow(Pomodoros::Create).to receive(:call).and_return(create(:daryllxd_error))
 
         failure_in_create_service = execute.call(tags: 'pants')
 

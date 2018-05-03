@@ -33,7 +33,7 @@ module Pomodoros
     end
 
     def created_pomodoro
-      Pomodoros::CreateService.call({ tags: found_tags }.merge(pomodoro_attributes.payload))
+      Pomodoros::Create.call({ tags: found_tags }.merge(pomodoro_attributes.payload))
     end
 
     memoize :created_pomodoro

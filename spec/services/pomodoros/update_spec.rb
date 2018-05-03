@@ -5,7 +5,7 @@ RSpec.describe Pomodoros::Update, type: :service do
   let!(:daryllxd_activity_tag) { create(:activity_tag, :daryllxd) }
 
   let!(:created_pomodoro) do
-    Pomodoros::CreateService.call(
+    Pomodoros::Create.call(
       duration: 25,
       description: 'Did things',
       tags: [programming_activity_tag]

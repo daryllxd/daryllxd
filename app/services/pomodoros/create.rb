@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Pomodoros
-  class CreateService < Pomodoros::BaseService
+  class Create< Pomodoros::BaseService
     include HasSteps
     extend Memoist
 
