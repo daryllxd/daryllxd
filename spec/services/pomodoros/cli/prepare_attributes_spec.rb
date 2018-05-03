@@ -24,6 +24,7 @@ RSpec.describe Pomodoros::Cli::PrepareAttributes do
       error = described_class.call(pants: 'whatever')
 
       expect(error).not_to be_valid
+      expect(error.message).to include('pants')
     end
   end
 end

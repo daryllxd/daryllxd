@@ -13,7 +13,7 @@ module Pomodoros
 
       def call
         payload = attributes.each_with_object({}) do |(key, value), hash|
-          return DaryllxdError.new unless attribute_preparations[key]
+          return wrong_attributes_error(key) unless attribute_preparations[key]
 
           hash[key] = attribute_preparations[key].call(value)
         end
@@ -29,6 +29,12 @@ module Pomodoros
           duration: proc { |attribute| attribute.to_i },
           duration_offset: proc { |attribute| attribute.to_i }
         }
+      end
+
+      def wrong_attributes_error(key)
+        DaryllxdError.new(
+          message: "Invalid pomodoro key #{key}."
+        )
       end
     end
   end

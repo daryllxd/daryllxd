@@ -22,6 +22,8 @@
 en:
   hello: "Hello world"
   pomodoro:
+    find:
+      error_cannot_find: "Cannot find pomodoro."
     create:
       error_no_tags: "Cannot create, no tags"
       error_no_tags_found: "Unable to find tags with that tag string."
