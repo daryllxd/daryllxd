@@ -3,7 +3,8 @@
 RSpec.describe Pomodoros::CreateInteractor, type: :service do
   context 'happy path' do
     it 'works if tags are resolved and pomodoros are created' do
-      allow(Pomodoros::TagResolver).to receive(:call).and_return(tags: ['mock_found_tag'])
+      mock_found_tags = create(:successful_operation)
+      allow(Pomodoros::TagResolver).to receive(:call).and_return(mock_found_tags)
       allow(Pomodoros::CreateService).to receive(:call).and_return(create(:successful_operation))
 
       expect(Pomodoros::TagResolver).to receive(:call).with(
@@ -14,7 +15,7 @@ RSpec.describe Pomodoros::CreateInteractor, type: :service do
         description: 'hello',
         duration: 5,
         duration_offset: 3,
-        tags: ['mock_found_tag']
+        tags: mock_found_tags
       )
 
       result = execute.call(
@@ -29,20 +30,18 @@ RSpec.describe Pomodoros::CreateInteractor, type: :service do
   end
 
   context 'errors' do
+    it 'error in preparing attributes for pomodoro creation: returns an invalid error' do
+      failure_in_create_service = execute.call(wrong_parameter: 'pants')
+
+      expect(failure_in_create_service).not_to be_valid
+      expect(failure_in_create_service.message).to include('Invalid pomodoro', 'wrong_parameter')
+    end
+
     it 'error in resolving tags: returns an invalid error' do
       allow(Pomodoros::TagResolver).to receive(:call).and_return(create(:daryllxd_error))
       result = execute.call(tags: '')
 
       expect(result).not_to be_valid
-    end
-
-    it 'error in preparing attributes for pomodoro creation: returns an invalid error' do
-      allow(Pomodoros::TagResolver).to receive(:call).and_return(create(:successful_operation))
-
-      failure_in_create_service = execute.call(lol: 'pants')
-
-      expect(failure_in_create_service).not_to be_valid
-      expect(failure_in_create_service.message).to eq 'Cannot create, invalid pomodoro'
     end
 
     context 'error in CreateService' do

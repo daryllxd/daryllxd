@@ -12,8 +12,8 @@ module Pomodoros
     end
 
     def call
-      return found_tags unless found_tags.valid?
       return pomodoro_attributes unless pomodoro_attributes.valid?
+      return found_tags unless found_tags.valid?
 
       if created_pomodoro.valid?
         created_pomodoro
