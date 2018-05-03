@@ -22,6 +22,26 @@ class PomodoroCli < Thor
     end
   end
 
+  desc 'update', 'Updates the last pomodoro'
+  method_option :description, type: :string, aliases: '-d'
+  method_option :duration, type: :string, aliases: '-d'
+  method_option :tags, type: :string, aliases: '-t'
+
+  def update
+    last_pomodoro = Pomodoro.last
+    new_pomodoros = Pomodoros::UpdateInteractor.call(
+      options.symbolize_keys.merge(
+        pomodoro_id: last_pomodoro.id
+      )
+    )
+
+    if new_pomodoros.valid?
+      puts Pomodoros::Presenters::ForDateRange.new.present
+    else
+      puts new_pomodoros.to_s
+    end
+  end
+
   desc 'append', 'Appends to the last pomodoro'
   method_option :duration, type: :string, aliases: '-u'
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Pomodoros
-  class UpdateInteractor
+  class UpdateInteractor < BaseService
     extend Memoist
 
     attr_reader :found_pomodoro, :options, :tags
