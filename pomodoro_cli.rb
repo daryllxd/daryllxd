@@ -26,9 +26,9 @@ class PomodoroCli < Thor
   method_option :duration, type: :string, aliases: '-u'
 
   def append
-    Pomodoros::AppendService.new(
+    Pomodoros::Append.call(
       duration: options[:duration]
-    ).call
+    )
 
     puts Pomodoros::Presenters::ForDateRange.new.present
   end

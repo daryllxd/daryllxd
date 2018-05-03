@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Pomodoros
-  class AppendService
+  class Append < BaseService
     attr_reader :duration
 
     def initialize(duration:)
