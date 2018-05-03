@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pomodoros::UpdateService, type: :service do
+RSpec.describe Pomodoros::Update, type: :service do
   let!(:programming_activity_tag) { create(:activity_tag, :programming) }
   let!(:daryllxd_activity_tag) { create(:activity_tag, :daryllxd) }
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Pomodoros
-  class UpdateService < Pomodoros::BaseService
+  class Update < Pomodoros::BaseService
     include HasSteps
     extend Memoist
 

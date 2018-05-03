@@ -10,9 +10,9 @@ RSpec.describe Pomodoros::UpdateInteractor, type: :service do
       expect(Pomodoros::TagResolver).to receive(:call).with(
         tag_string: 'swag'
       )
-      allow(Pomodoros::UpdateService).to receive(:call).and_return(create(:successful_operation))
+      allow(Pomodoros::Update).to receive(:call).and_return(create(:successful_operation))
 
-      expect(Pomodoros::UpdateService).to receive(:call).with(
+      expect(Pomodoros::Update).to receive(:call).with(
         pomodoro: mock_found_pomodoro,
         pomodoro_attributes: {
           description: 'hello',
@@ -61,7 +61,7 @@ RSpec.describe Pomodoros::UpdateInteractor, type: :service do
       it 'results in an error' do
         allow(Pomodoro).to receive(:find_by).and_return(create(:successful_operation))
         allow(Pomodoros::TagResolver).to receive(:call).and_return(create(:successful_operation))
-        allow(Pomodoros::UpdateService).to receive(:call).and_return(
+        allow(Pomodoros::Update).to receive(:call).and_return(
           create(:daryllxd_error, message: 'Mock: Unable to update.')
         )
 

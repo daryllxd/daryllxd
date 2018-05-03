@@ -30,7 +30,7 @@ module Pomodoros
     end
 
     def updated_pomodoro
-      Pomodoros::UpdateService.call(
+      Pomodoros::Update.call(
         pomodoro: found_pomodoro,
         pomodoro_attributes: pomodoro_attributes.payload,
         tags: found_tags
