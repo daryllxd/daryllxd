@@ -36,7 +36,7 @@ class PomodoroCli < Thor
   desc 'destroy', 'Destroys the last pomodoro'
 
   def destroy
-    Pomodoros::DestroyService.new.call
+    Pomodoros::Destroy.call
 
     puts Pomodoros::Presenters::ForDateRange.new.present
   end

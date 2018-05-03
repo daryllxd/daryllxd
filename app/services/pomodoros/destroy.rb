@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Pomodoros
-  class DestroyService
+  class Destroy < BaseService
     def call
       Pomodoro.last.destroy
     end

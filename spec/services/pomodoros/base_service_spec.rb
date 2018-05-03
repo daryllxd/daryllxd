@@ -1,5 +1,8 @@
 # frozen_string_literal: true
+
 class PomodoroTestBaseService < Pomodoros::BaseService
+  def initialize(*args); end
+
   def call
     'swag'
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Pomodoros::DestroyService, type: :service do
+RSpec.describe Pomodoros::Destroy, type: :service do
   context '#call' do
     context 'success' do
       it 'it destroys the last Pomodoro and its activity tags' do
