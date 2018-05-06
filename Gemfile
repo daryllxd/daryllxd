@@ -28,6 +28,9 @@ gem 'dry-struct', '0.4.0'
 gem 'memoist', '0.16.0'
 gem 'powerpack'
 
+# External-APIs
+gem 'faraday', '0.15.0'
+
 # Testing out
 gem 'graphql', '1.7.13'
 gem 'graphiql-rails'
