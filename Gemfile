@@ -5,7 +5,7 @@ ruby '2.4.1'
 # Rails/web related
 gem 'rails', '~> 5.1.5'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
-gem 'bootsnap', '~> 1.2.0'
+gem 'bootsnap', '~> 1.3.0'
 gem 'dotenv', require: false
 gem 'pg', '0.19.0'
 gem 'rack-cors', require: 'rack/cors'
@@ -63,7 +63,6 @@ group :development do
   gem 'rails_layout'
   gem 'rubocop', '0.52.1', require: false
   gem 'ruby-growl'
-  gem 'web-console', '~> 2.0'
   gem 'spring-commands-rspec'
 end
 
