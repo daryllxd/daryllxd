@@ -2,7 +2,7 @@
 
 RSpec.describe Api::V1::BooksController, type: :controller do
   context 'happy path' do
-    it 'grabs all the Pomodoros in a day' do
+    it 'renders all the Books' do
       allow(controller).to receive(:doorkeeper_token) { double(acceptable?: true) }
 
       get :index

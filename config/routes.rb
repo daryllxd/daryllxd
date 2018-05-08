@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     resources :registrations, only: :create
 
     resources :pomodoros, only: :index
-    resources :books, only: :index
+    resources :books, only: :index do
+      collection do
+        get :search # Search the APIs for (given a title), not search the books in the database for.
+      end
+    end
   end
 end
