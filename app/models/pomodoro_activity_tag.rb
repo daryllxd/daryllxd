@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: pomodoro_activity_tags
@@ -11,8 +12,9 @@
 #
 # Indexes
 #
-#  index_pomodoro_activity_tags_on_activity_tag_id  (activity_tag_id)
-#  index_pomodoro_activity_tags_on_pomodoro_id      (pomodoro_id)
+#  index_pomodoro_activity_tags_on_activity_tag_id                  (activity_tag_id)
+#  index_pomodoro_activity_tags_on_pomodoro_id                      (pomodoro_id)
+#  index_pomodoro_activity_tags_on_pomodoro_id_and_activity_tag_id  (pomodoro_id,activity_tag_id) UNIQUE
 #
 # Foreign Keys
 #
@@ -23,4 +25,6 @@
 class PomodoroActivityTag < ApplicationRecord
   belongs_to :pomodoro, foreign_key: :pomodoro_id
   belongs_to :activity_tag, foreign_key: :activity_tag_id
+
+  validates :pomodoro_id, uniqueness: { scope: :activity_tag_id }
 end

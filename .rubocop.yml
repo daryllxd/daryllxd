@@ -44,6 +44,10 @@ Layout/IndentArray:
   Exclude:
     - '**/*_spec.rb'
 
+Style/SymbolArray:
+  Exclude:
+    - 'db/**/*'
+
 # I do not agree with this! -Daryll http://www.rubydoc.info/gems/rubocop/0.44.1/RuboCop/Cop/Style/Next
 Style/Next:
   Enabled: false
