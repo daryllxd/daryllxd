@@ -8,8 +8,8 @@ RSpec.describe Pomodoros::Web::ValidateWebParams, type: :ls_action do
           description: 'Coded something.', duration: 9, started_at: Time.current
         },
         activity_tags: [
-          { id: 1, description: 'Swagging' },
-          { id: 2, description: 'Campaigning' }
+          { id: 1, name: 'Swagging' },
+          { id: 2, name: 'Campaigning' }
         ]
       )
 
@@ -35,7 +35,7 @@ RSpec.describe Pomodoros::Web::ValidateWebParams, type: :ls_action do
     it 'error in pomodoro schema' do
       create_params = LightService::Context.new(
         pomodoro: {},
-        activity_tags: [{ id: 1, description: 'Coding' }]
+        activity_tags: [{ id: 1, name: 'Coding' }]
       )
 
       action_result = described_class.execute(params: create_params)
@@ -56,7 +56,7 @@ RSpec.describe Pomodoros::Web::ValidateWebParams, type: :ls_action do
 
       expect(action_result).to be_failure
       expect(action_result.message.payload).to eq(
-        activity_tags: { 0 => { id: ['is missing'], description: ['is missing'] } }
+        activity_tags: { 0 => { id: ['is missing'], name: ['is missing'] } }
       )
     end
   end

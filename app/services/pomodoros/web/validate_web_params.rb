@@ -17,7 +17,7 @@ module Pomodoros
       required(:activity_tags).each do
         schema do
           required(:id).filled.int?
-          required(:description).filled.str?
+          required(:name).filled.str?
         end
       end
     end
