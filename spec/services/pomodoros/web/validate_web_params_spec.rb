@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe Pomodoros::Web::ValidateWebParams, type: :service do
+RSpec.describe Pomodoros::Web::ValidateWebParams, type: :ls_action do
   context 'happy path' do
     it 'is successful' do
-      pomodoro_create_params = {
+      create_params = LightService::Context.new(
         pomodoro: {
           description: 'Coded something.', duration: 9, started_at: Time.current
         },
@@ -11,43 +11,51 @@ RSpec.describe Pomodoros::Web::ValidateWebParams, type: :service do
           { id: 1, description: 'Swagging' },
           { id: 2, description: 'Campaigning' }
         ]
-      }
+      )
 
-      expect(execute.call(pomodoro_create_params)).to be_valid
+      action_result = described_class.execute(params: create_params)
+
+      expect(action_result).to be_success
     end
   end
 
   context 'errors' do
     it 'generic error/nils' do
-      operation_result = execute.call(nil)
+      create_params = {}
 
-      expect(operation_result).not_to be_valid
-      expect(operation_result.payload).to eq(
+      action_result = described_class.execute(params: create_params)
+
+      expect(action_result).to be_failure
+      expect(action_result.message.payload).to eq(
         pomodoro: ['is missing'],
         activity_tags: ['is missing']
       )
     end
 
     it 'error in pomodoro schema' do
-      operation_result = execute.call(
+      create_params = LightService::Context.new(
         pomodoro: {},
         activity_tags: [{ id: 1, description: 'Coding' }]
       )
 
-      expect(operation_result).not_to be_valid
-      expect(operation_result.payload).to eq(
+      action_result = described_class.execute(params: create_params)
+
+      expect(action_result).to be_failure
+      expect(action_result.message.payload).to eq(
         pomodoro: { description: ['is missing'], duration: ['is missing'], started_at: ['is missing'] }
       )
     end
 
     it 'error in activity_tag schema' do
-      operation_result = execute.call(
+      create_params = LightService::Context.new(
         pomodoro: { description: 'Hello', duration: 5, started_at: Time.current },
         activity_tags: [{ irrelevant: 'irrelevant' }]
       )
 
-      expect(operation_result).not_to be_valid
-      expect(operation_result.payload).to eq(
+      action_result = described_class.execute(params: create_params)
+
+      expect(action_result).to be_failure
+      expect(action_result.message.payload).to eq(
         activity_tags: { 0 => { id: ['is missing'], description: ['is missing'] } }
       )
     end

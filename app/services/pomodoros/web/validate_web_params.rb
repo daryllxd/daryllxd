@@ -22,25 +22,17 @@ module Pomodoros
       end
     end
 
-    class ValidateWebParams < BaseService
-      attr_reader :params
+    class ValidateWebParams
+      extend LightService::Action
 
-      def initialize(params = {})
-        @params = params
-      end
+      expects :params
 
-      def call
-        if validated_pomodoro.success?
-          SuccessfulOperation.new
-        else
-          DaryllxdError.new(message: 'Invalid', payload: validated_pomodoro.errors)
+      executed do |context|
+        validated_pomodoro = PomodoroSchema.call(context.params)
+
+        if validated_pomodoro.failure?
+          context.fail!(DaryllxdError.new(message: 'Wrong Params', payload: validated_pomodoro.errors))
         end
-      end
-
-      private
-
-      def validated_pomodoro
-        PomodoroSchema.call(params)
       end
     end
   end

@@ -7,6 +7,7 @@ gem 'rails', '~> 5.1.5'
 gem 'annotate', '~> 2.7', '>= 2.7.1'
 gem 'bootsnap', '~> 1.3.0'
 gem 'dotenv', require: false
+gem 'light-service', '~> 0.10.3'
 gem 'message_bus', '~> 2.1'
 gem 'pg', '0.19.0'
 gem 'rack-cors', require: 'rack/cors'
