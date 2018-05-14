@@ -25,7 +25,8 @@ gem 'doorkeeper', '4.3.1'
 gem 'jwt', '2.1.0'
 
 # Ruby-related
-gem 'dry-struct', '0.4.0'
+gem 'dry-struct', '~> 0.4.0'
+gem 'dry-validation', '~> 0.11.1'
 gem 'memoist', '0.16.0'
 gem 'powerpack'
 
@@ -82,4 +83,3 @@ group :test do
   gem 'test-prof', '0.4.0', require: false
   gem 'timecop', require: false
 end
-
