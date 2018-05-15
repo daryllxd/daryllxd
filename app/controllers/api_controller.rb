@@ -30,6 +30,10 @@ class ApiController < ApplicationController
     render_error(error_hash)
   end
 
+  def clean_params
+    HashWithIndifferentAccess.new(params.except(:controller, :action))
+  end
+
   private
 
   def infer_status_from_action

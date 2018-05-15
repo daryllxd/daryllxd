@@ -12,7 +12,7 @@ RSpec.describe Api::V1::PomodorosController, type: :controller do
       get :index
 
       expect(response).to be_success
-      expect(json_response).to have_key('data')
+      expect(json_response).to have_key('pomodoros')
     end
   end
 
