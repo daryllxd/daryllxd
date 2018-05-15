@@ -28,11 +28,16 @@ module Pomodoros
       expects :params
 
       executed do |context|
+        context.fail_and_return!(wrong_params_error) if context.params.blank?
         validated_pomodoro = PomodoroSchema.call(context.params)
 
-        if validated_pomodoro.failure?
-          context.fail!(DaryllxdError.new(message: 'Wrong Params', payload: validated_pomodoro.errors))
-        end
+        context.fail!(wrong_params_error(validated_pomodoro.errors)) if validated_pomodoro.failure?
+      end
+
+      def self.wrong_params_error(payload = nil)
+        DaryllxdError.new(
+          message: 'Wrong Params', payload: payload
+        )
       end
     end
   end
