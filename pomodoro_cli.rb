@@ -9,16 +9,16 @@ class PomodoroCli < Thor
   desc 'new', 'Makes a new pomodoro'
   method_option :description, type: :string, aliases: '-d', default: ''
   method_option :duration, type: :string, aliases: '-u', default: 0
-  method_option :tags, type: :string, aliases: '-t', default: ''
+  method_option :activity_tags, type: :string, aliases: '-t', default: ''
   method_option :duration_offset, type: :string, aliases: '-o', default: 0
 
   def new
-    new_pomodoros = Pomodoros::CreateInteractor.new(options.symbolize_keys).call
+    new_pomodoros = Pomodoros::Cli::CreateOrganizer.call(options.symbolize_keys)
 
-    if new_pomodoros.valid?
+    if new_pomodoros.success?
       puts Pomodoros::Presenters::ForDateRange.new.present
     else
-      puts new_pomodoros.to_s
+      puts [new_pomodoros.message.to_s, new_pomodoros.message.payload].join(': ')
     end
   end
 

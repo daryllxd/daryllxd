@@ -3,6 +3,8 @@
 # Loads everything needed for the Pomodoro sub-app
 require 'dry-types'
 require 'dry-struct'
+require 'dry-validation'
+require 'light-service'
 
 module Types
   include Dry::Types.module
@@ -20,6 +22,11 @@ require 'app/models/date_range'
 require 'app/models/activity_tag'
 require 'app/models/pomodoros/queries/for_date_range'
 require 'app/services/pomodoros/base_service'
+require 'app/services/pomodoros/cli/create_organizer'
+require 'app/services/pomodoros/cli/validate_cli_params'
+require 'app/services/pomodoros/cli/resolve_activity_tags_from_tag_string'
+require 'app/services/pomodoros/create_pomodoro'
+require 'app/services/pomodoros/create_pomodoro_activity_tags'
 require 'app/services/pomodoros/cli/prepare_attributes'
 require 'app/services/pomodoros/append'
 require 'app/services/pomodoros/create_interactor'

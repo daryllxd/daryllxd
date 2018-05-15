@@ -11,7 +11,7 @@ module Pomodoros
       required(:description).filled.str?
       required(:duration).filled(gt?: 0).int?
       required(:activity_tags).filled.str?
-      optional(:duration_offset).filled(gt?: 0).int?
+      optional(:duration_offset).filled(gteq?: 0).int?
     end
 
     class ValidateCliParams
