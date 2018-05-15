@@ -1,30 +1,35 @@
 # frozen_string_literal: true
 
-RSpec.describe Pomodoros::Cli::PrepareAttributes do
-  context 'happy path' do
-    it 'empty hash: returns an empty hash' do
-      expect(described_class.call({})).to be_valid
-    end
+module Pomodoros
+  module Cli
+    RSpec.describe PrepareAttributes do
+      context 'happy path' do
+        it 'applies transformations for each attribute supplied' do
+          create_params = LightService::Context.new(
+            params: {
+              description: 'Hello',
+              duration: '99',
+              duration_offset: '98'
+            }
+          )
 
-    it 'applies transformations for each attribute supplied' do
-      prepared_attributes = described_class.call(description: 'Hello', duration: '99', duration_offset: '98')
+          action_result = described_class.execute(create_params)
 
-      expect(prepared_attributes.payload).to eq(description: 'Hello', duration: 99, duration_offset: 98)
-    end
+          expect(action_result.params).to eq(description: 'Hello', duration: 99, duration_offset: 98)
+        end
 
-    it 'only applies the transformation to the attributes if they were present' do
-      prepared_attributes = described_class.call(duration: '99')
+        it 'only applies the transformation to the attributes if they were present' do
+          create_params = LightService::Context.new(
+            params: {
+              duration: '99'
+            }
+          )
 
-      expect(prepared_attributes.payload).to eq(duration: 99)
-    end
-  end
+          action_result = described_class.execute(create_params)
 
-  context 'errors' do
-    it 'has unneeded attributes-raises an error' do
-      error = described_class.call(pants: 'whatever')
-
-      expect(error).not_to be_valid
-      expect(error.message).to include('pants')
+          expect(action_result.params).to eq(duration: 99)
+        end
+      end
     end
   end
 end
