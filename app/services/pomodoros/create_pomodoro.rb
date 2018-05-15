@@ -18,10 +18,12 @@ module Pomodoros
     end
 
     def self.create_pomdoro_attributes(params)
+      duration_offset = (params[:duration_offset] || 0).minutes
+
       {
         description: params[:description],
         duration: params[:duration],
-        started_at: Time.current - params[:duration].minutes
+        started_at: Time.current - params[:duration].minutes - duration_offset
       }
     end
 

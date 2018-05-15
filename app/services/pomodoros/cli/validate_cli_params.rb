@@ -23,7 +23,11 @@ module Pomodoros
         context.fail_and_return!(wrong_params_error) if context.params.blank?
         validated_pomodoro = PomodoroSchema.call(context.params)
 
-        context.fail!(wrong_params_error(validated_pomodoro.errors)) if validated_pomodoro.failure?
+        if validated_pomodoro.success?
+          context.params[:pomodoro] = validated_pomodoro.output
+        else
+          context.fail!(wrong_params_error(validated_pomodoro.errors))
+        end
       end
 
       def self.wrong_params_error(payload = nil)

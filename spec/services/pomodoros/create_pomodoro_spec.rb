@@ -9,7 +9,8 @@ RSpec.describe Pomodoros::CreatePomodoro, type: :ls_action do
         create_params = LightService::Context.new(
           pomodoro: {
             description: 'Styling and profiling',
-            duration: 90
+            duration: 90,
+            duration_offset: 30
           }
         )
 
@@ -21,7 +22,7 @@ RSpec.describe Pomodoros::CreatePomodoro, type: :ls_action do
 
         expect(created_pomodoro.description).to eq('Styling and profiling')
         expect(created_pomodoro.duration).to eq(90)
-        expect(created_pomodoro.started_at).to eq(Time.new(2018, 2, 15, 3, 30, 0))
+        expect(created_pomodoro.started_at).to eq(Time.new(2018, 2, 15, 3, 0, 0))
       end
     end
   end
