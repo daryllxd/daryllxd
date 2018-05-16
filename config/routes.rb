@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   ) do
     resources :registrations, only: :create
 
+    resources :activity_tags, only: %w[index]
     resources :pomodoros, only: %w[create index]
     resources :books, only: :index do
       collection do
