@@ -39,7 +39,7 @@ gem 'graphql', '1.7.13'
 gem 'graphiql-rails'
 
 group :development, :test do
-  gem 'bullet', '5.5.1'
+  gem 'bullet', '5.7.5'
   gem 'clipboard'
   gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
