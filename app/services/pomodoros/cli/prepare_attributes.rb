@@ -12,6 +12,8 @@ module Pomodoros
 
       executed do |context|
         payload = context.params.each_with_object({}) do |(key, value), hash|
+          context.fail_and_return!(unneeded_field_error(key)) unless attribute_preparations[key]
+
           hash[key] = attribute_preparations[key].call(value)
         end
 
@@ -25,6 +27,12 @@ module Pomodoros
           duration_offset: proc { |attribute| attribute.to_i },
           activity_tags: proc { |attribute| attribute }
         }
+      end
+
+      def self.unneeded_field_error(key)
+        DaryllxdError.new(
+          message: "Unneeded params #{key}."
+        )
       end
     end
   end

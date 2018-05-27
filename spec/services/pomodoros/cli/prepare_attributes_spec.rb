@@ -30,6 +30,20 @@ module Pomodoros
           expect(action_result.params).to eq(duration: 99)
         end
       end
+
+      context 'error, unneeded field' do
+        it 'fails and returns the context, while specifying which params was unneeded' do
+          create_params = LightService::Context.new(
+            params: { irrelevant: 'yeah' }
+          )
+
+          action_result = described_class.execute(create_params)
+
+          expect(action_result).to be_failure
+          expect(action_result.message).to be_a_kind_of(DaryllxdError)
+          expect(action_result.message.message).to include('Unneeded params', 'irrelevant')
+        end
+      end
     end
   end
 end
