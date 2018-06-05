@@ -20,12 +20,12 @@ module Pomodoros
 
           expect(action_result).to be_success
 
-          expect(action_result.params[:pomodoro_params]).to eq({
+          expect(action_result.params[:pomodoro_params]).to eq(
             description: 'Coded something.',
             duration: 9,
             duration_offset: 3,
             activity_tags: 'haha'
-          })
+          )
         end
       end
 
@@ -39,7 +39,7 @@ module Pomodoros
         it 'error in params' do
           create_params = LightService::Context.new(
             params: {
-              duration_offset: -3,
+              duration_offset: -3
             }
           )
 

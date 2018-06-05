@@ -1,23 +1,32 @@
 # frozen_string_literal: true
 
+require 'timecop'
+
 RSpec.describe Pomodoros::Web::ValidateWebParams, type: :ls_action do
   context 'happy path' do
     it 'is successful' do
-      create_params = LightService::Context.new(
-        params: {
-          pomodoro: {
-            description: 'Coded something.', duration: 9, started_at: Time.current
-          },
-          activity_tags: [
-            { id: 1, name: 'Swagging' },
-            { id: 2, name: 'Campaigning' }
-          ]
-        }
-      )
+      Timecop.freeze(Time.new(2018, 2, 15, 5, 0, 0)) do
+        create_params = LightService::Context.new(
+          params: {
+            pomodoro: {
+              description: 'Coded something.', duration: 9, started_at: Time.current
+            },
+            activity_tags: [
+              { id: 1, name: 'Swagging' },
+              { id: 2, name: 'Campaigning' }
+            ]
+          }
+        )
 
-      action_result = described_class.execute(create_params)
+        action_result = described_class.execute(create_params)
 
-      expect(action_result).to be_success
+        expect(action_result).to be_success
+        expect(action_result.params[:pomodoro_params]).to eq(
+          duration: 9,
+          started_at: Time.current,
+          description: 'Coded something.'
+        )
+      end
     end
   end
 
