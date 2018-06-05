@@ -7,7 +7,9 @@ module Pomodoros
         let!(:activity_tag) { create(:activity_tag, :programming) }
         let!(:create_params) do
           {
-            description: 'Coded something.', duration: 9, activity_tags: 'p'
+            description: 'Coded something.',
+            duration: '9',
+            activity_tags: 'p'
           }
         end
 

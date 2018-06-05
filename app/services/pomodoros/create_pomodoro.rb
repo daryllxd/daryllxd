@@ -8,7 +8,7 @@ module Pomodoros
     promises :pomodoro
 
     executed do |context|
-      created_pomodoro = Pomodoro.create(create_pomdoro_attributes(context.params[:pomodoro]))
+      created_pomodoro = Pomodoro.create(create_pomdoro_attributes(context.params[:pomodoro_params]))
 
       if created_pomodoro.valid?
         context.pomodoro = created_pomodoro

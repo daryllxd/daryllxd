@@ -7,7 +7,7 @@ RSpec.describe Pomodoros::CreatePomodoro, type: :ls_action do
     it 'creates a Pomodoro with a start time adjusted for the duration' do
       Timecop.freeze(Time.new(2018, 2, 15, 5, 0, 0)) do
         create_params = LightService::Context.new(
-          pomodoro: {
+          pomodoro_params: {
             description: 'Styling and profiling',
             duration: 90,
             duration_offset: 30
@@ -30,7 +30,7 @@ RSpec.describe Pomodoros::CreatePomodoro, type: :ls_action do
   context 'failures' do
     it 'does not create a Pomodoro, and fails the context' do
       create_params = LightService::Context.new(
-        pomodoro: {
+        pomodoro_params: {
           description: 'Styling and profiling',
           duration: -90
         }

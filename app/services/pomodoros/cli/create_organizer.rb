@@ -11,7 +11,6 @@ module Pomodoros
 
       def self.actions
         [
-          ::Pomodoros::Cli::PrepareAttributes,
           ::Pomodoros::Cli::ValidateCliParams,
           ::Pomodoros::Cli::ResolveActivityTagsFromTagString,
           ::Pomodoros::CreatePomodoro,
