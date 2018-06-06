@@ -14,7 +14,7 @@ module Pomodoros
 
       required(:pomodoro).schema do
         required(:description).filled.str?
-        required(:duration).filled(gt?: 0).int?
+        required(:duration) { int? & gt?(0) }
         required(:started_at).filled.date_time?
       end
 

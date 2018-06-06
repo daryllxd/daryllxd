@@ -40,7 +40,7 @@ RSpec.describe Pomodoros::Web::ValidateWebParams, type: :ls_action do
     it 'error in pomodoro schema' do
       create_params = LightService::Context.new(
         params: {
-          pomodoro: {},
+          pomodoro: { duration: '9' },
           activity_tags: [{ id: 1, name: 'Coding' }]
         }
       )
@@ -49,7 +49,7 @@ RSpec.describe Pomodoros::Web::ValidateWebParams, type: :ls_action do
 
       expect(action_result).to be_failure
       expect(action_result.message.payload).to eq(
-        pomodoro: { description: ['is missing'], duration: ['is missing'], started_at: ['is missing'] }
+        pomodoro: { description: ['is missing'], duration: ['must be an integer'], started_at: ['is missing'] }
       )
     end
 
