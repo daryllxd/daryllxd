@@ -8,7 +8,7 @@ RSpec.describe Api::V1::PomodorosController, type: :controller do
           create_pomodoro_params = { irrelevant: 'irrelevant' }
 
           allow(Pomodoros::Web::CreateOrganizer).to receive(:call)
-            .and_return(double(success: true))
+            .and_return(double(success?: true))
           expect(Pomodoros::Web::CreateOrganizer).to receive(:call)
             .with(create_pomodoro_params)
 
@@ -24,7 +24,7 @@ RSpec.describe Api::V1::PomodorosController, type: :controller do
           create_pomodoro_params = { irrelevant: 'irrelevant' }
 
           allow(Pomodoros::Web::CreateOrganizer).to receive(:call)
-            .and_return(double(success: false, message: create(:daryllxd_error)))
+            .and_return(double(success?: false, message: create(:daryllxd_error)))
           expect(Pomodoros::Web::CreateOrganizer).to receive(:call)
             .with(create_pomodoro_params)
 
