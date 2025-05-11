@@ -5,7 +5,7 @@
 - I am currently tinkering around on:
   - 😎 [My tech blog](https://daryllxd.notion.site/tech)
   - 🗺️ A [better way of visualizing Visa requirements](http://visa-check-yo.vercel.app/) to try to fix the tedious process!
-  - 🧑‍🎨 Creating a [small Padlet clone](https://github.com/daryllxd/x-padlet) with partial features for self-learning.
+  - 🧑‍🎨 Creating a [small Padlet clone](https://github.com/daryllxd/x-padlet) with partial features for self-learning. [Demo](https://puglet.daryll.codes/)
   - 🇪🇸 Creating a [way to learn Spanish with things I enjoy](https://github.com/daryllxd/archivos-templarios) and adding some dictation to it.
   - 🛹 Converting a [childhood board game](https://en.wikipedia.org/wiki/Game_of_the_Generals) into a web app.
 - My tools: [Reference](https://daryllxd.notion.site/tools?pvs=74)
